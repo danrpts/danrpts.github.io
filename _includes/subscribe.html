@@ -1,0 +1,25 @@
+<section class="container mt-5 mb-1">
+  <div class="row justify-content-center">
+    <div class="col-7">
+      <h4 class="text-center display-4">Stay tuned</h4>
+      <p class="text-justify lead">
+        Hi, I'm <a href="{{ "/about" | relative_url }}">{{ site.author.name }}</a>. A techno explorer in the age of the <a href="http://phrack.org/issues/7/3.html">"electron and the switch."</a> This is my blog where you may discover interesting articles and learn about some projects I'm working on. Follow me on github <a href="http://github.com/{{site.github.username}}" target="_blank">@danrpts</a>, or subscribe for updates:
+      </p>
+      <div class="text-center">
+        <form action="{{ mailchimp }}" method="post" target="_blank" novalidate>
+          <div class="form-group">
+            <div class="">
+              <div class="input-group input-group-lg">
+                <input type="text" class="form-control lead" placeholder="Enter your email address ..." name="{{ mailchimp }}">
+                <span class="input-group-btn">
+                  <button class="btn btn-secondary" type="submit"><span class="lead">Subscribe!</span></button>
+                </span>
+              </div>
+            </div>
+            <small id="emailHelp" class="form-text text-muted text-left">We'll never share your email with anyone else.</small>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>

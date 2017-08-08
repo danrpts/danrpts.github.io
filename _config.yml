@@ -1,0 +1,92 @@
+
+# Build Settings
+markdown: kramdown
+highlighter: rouge
+excerpt_seperator: "<!--more-->"
+permalink: /:title/
+
+# Plugins
+gems:
+  - jekyll-sitemap
+  - jekyll-seo-tag
+  - jekyll-feed
+  - jemoji
+
+# Site Settings
+timezone: America/Los_Angeles
+lang: en
+encoding: utf-8
+title: superdan
+description: crunchy techno cereal
+baseurl:
+url: https://danrpts.github.io
+repo: https://github.com/danrpts.github.io
+
+rss:                    #rss feed url
+
+icon:                #your site icon path # /assets/img/icon.png [best 300px X 300px]
+disqus:
+google_analytics:    #your google analytics account ID
+mailchimp:           #yout mailchimp thing
+
+# Asset Paths
+css_folder:  "/assets/css"
+js_folder:  "/assets/javascripts"
+img_folder: "/assets/images"
+
+# SEO Settings
+google_site_verification :
+bing_site_verification   :
+alexa_site_verification  :
+yandex_site_verification :
+
+# Social Sharing
+#twitter:
+  #username               :
+#github:
+  #username               : "danrpts"
+#linkedin:
+  #username               : "danrpts"
+#facebook:
+  #username               :
+  #app_id                 :
+
+# Social Profiles
+social:
+  name                   : "Daniel Peterson"
+  links:
+    - "https://github.com/danrpts"
+
+author:
+  name: Daniel Peterson
+  twitter:
+  picture:
+
+
+# Server
+destination:      	 ./_site
+
+# Excluded From Jekyll Builds
+exclude:
+  - .editorconfig
+  - .gitignore
+  - bower.json
+  - composer.json
+  - CONTRIBUTING.md
+  - CNAME
+  - LICENSE
+  - Gruntfile.js
+  - package.json
+  - node_modules
+  - README.md
+  - sass
+  - haml
+
+# Front Matter Defaults
+defaults:
+  - scope:
+      path: "_posts"
+      type: posts
+    values:
+      layout: default
+read_time: true
