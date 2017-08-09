@@ -1,0 +1,2 @@
+- [ ] fuzzy search on 404
+- [ ] ascii art game on 404
