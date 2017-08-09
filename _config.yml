@@ -24,11 +24,13 @@ repo: https://github.com/danrpts.github.io
 
 rss:                    #rss feed url
 
-icon:                #your site icon path # /assets/img/icon.png [best 300px X 300px]
+icon:
 disqus:
-google_analytics:    #your google analytics account ID
-mailchimp:           #yout mailchimp thing
-
+google_analytics: UA-104085609-1
+google_search: 003159598952603805440:eizdvpyonms
+google_ads: ca-pub-9333758446188935
+mailchimp:
+  
 # Asset Paths
 css_folder:  "/assets/css"
 js_folder:  "/assets/javascripts"

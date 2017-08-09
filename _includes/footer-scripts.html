@@ -2,3 +2,12 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
 <script src="https://use.fontawesome.com/e6807b252b.js"></script>
+{% if site.google_analytics %}
+  {% include google-analytics.html %}
+{% endif %}
+{% if site.google_search %}
+  {% include google-search.html %}
+{% endif %}
+{% if site.google_ads %}
+  {% include google-ads.html %}
+{% endif %}
