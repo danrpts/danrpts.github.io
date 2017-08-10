@@ -10,9 +10,9 @@
     <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
       <ul class="navbar-nav mr-auto mt-2 mt-md-0">
       </ul>
-      <form class="form-inline my-2 my-lg-0">
-        <input class="form-control mr-sm-2" type="text" placeholder="Search">
-        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+      <form class="form-inline my-2 my-lg-0" method="get" action="{{ "/search" | relative_url }}">
+        <input class="form-control mr-sm-2" type="text" placeholder="Search title, tag, category, etc.">
+        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Go!</button>
       </form>
     </div>
   </div>
