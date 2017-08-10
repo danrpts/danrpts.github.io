@@ -1,18 +1,18 @@
-<nav class="navbar sticky-top navbar-toggleable-md navbar-light bg-faded mb-1" style="background-color: white; border-bottom: 1px solid rgba(0,0,0,.15);">
+<nav data-toggle="sticky-onscroll" class="navbar sticky-top navbar-toggleable-md navbar-light bg-faded" style="background-color: white; border-bottom: 1px solid rgba(0,0,0,.15); top: 0em;">
   <div class="container">
-    <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
     <a class="navbar-brand" href="{{ "/" | relative_url }}">
-      <i class="fa fa-circle-thin" aria-hidden="true"></i>
+      <img src="{{ "/assets/images/logo-text-small-techno.svg" | relative_url }}" width="30" height="30" alt="">
     </a>
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav mr-auto">
 
+    <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+      <ul class="navbar-nav mr-auto mt-2 mt-md-0">
       </ul>
-      <form class="form-inline my-2 my-lg-0" role="search" method="get" action="{{ "/search" | relative_url }}">
-        <input class="form-control mr-sm-2 lead" type="text" placeholder="titles, tags, categories, etc." name="q">
-        <button class="btn btn-outline-success my-2 my-sm-0 lead" type="submit">Search</button>
+      <form class="form-inline my-2 my-lg-0">
+        <input class="form-control mr-sm-2" type="text" placeholder="Search">
+        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
       </form>
     </div>
   </div>

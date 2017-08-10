@@ -1,2 +1,17 @@
 ---
 ---
+
+@media (max-width: 767px) {
+  .navbar .container {
+    width: 100%;
+  }
+}
+
+.sticky-top.is-sticky {
+  position: fixed;
+  left: 0;
+  right: 0;
+  top: 0;
+  z-index: 1000;
+  width: 100%;
+}

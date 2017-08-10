@@ -1,10 +1,11 @@
 ---
 layout: default
 ---
+
 {% include header.html %}
 {% include navbar.html %}
 
-<section class="container mt-3 mb-1">
+<section class="container mt-4 mb-5">
   <div class="row">
     <div class="card-columns">
       {% for post in site.posts %}
@@ -13,16 +14,9 @@ layout: default
         <img class="card-img-top img-fluid" src="{{ "/assets/images/heros/" | append: post.image.feature | relative_url }}" alt="Card image cap">
         {% endif %}
         <div class="card-block">
-          <h4 class="card-title"><a href="#">{{ post.title }}</a></h4>
+          <h4 class="card-title"><a href="{{ post.url | relative_url }}">{{ post.title }}</a></h4>
           <p class="card-text">{{ post.excerpt | strip_html | normalize_whitespace | truncate: 60 | escape }}</p>
-          <!-- read time credit: https://carlosbecker.com/posts/jekyll-reading-time-without-plugins/ -->
-          {% assign words = content | number_of_words %}
-          {% if words < 360 %}
-            {% assign time = 1 %}
-          {% else %}
-            {% assign time = words | divided_by: 180 %}
-          {% endif %}
-          <!-- end credit -->
+          {% include time.html %}
           <p class="card-text"><small class="text-muted">{{ post.date | date: "%b %-d" }} &middot; {{ time }} min read </small></p>
         </div>
       </div>
@@ -32,3 +26,4 @@ layout: default
 </section>
 
 {% include subscribe.html %}
+{% include footer.html %}

@@ -1,19 +1,8 @@
 <!DOCTYPE html>
 <html lang="{{ site.lang | default: "en" }}">
-
   {% include head.html %}
-
   <body>
-
     {{ content }}
-
-    {% include footer.html %}
-
-    {% if site.google_analytics %}
-      {% include google-analytics.html %}
-    {% endif %}
-
     {% include footer-scripts.html %}
-
   </body>
 </html>
