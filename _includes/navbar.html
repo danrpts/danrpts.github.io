@@ -8,9 +8,9 @@
     </a>
 
     {% if page.id  %}
-    <a type="button" class="btn btn-outline-primary align-middle" href="#">
+    <button type="button" class="btn btn-outline-primary align-middle" data-toggle="modal" data-target="#shareModal">
       Share <i class="fa fa-share-alt" aria-hidden="true"></i>
-    </a>
+    </button>
     {% endif %}
 
     {% if page.url | split:'page' | first == "/" }} %}

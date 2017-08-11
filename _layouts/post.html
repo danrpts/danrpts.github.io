@@ -1,6 +1,45 @@
 ---
 layout: default
 ---
+<div class="modal fade" id="shareModal" tabindex="-1" role="dialog" aria-labelledby="shareModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title display-4" id="shareModalLabel">Thanks for sharing!</h4>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body text-center">
+        <a class="btn btn-lg" href="#" role="button">
+          <i class="fa fa-twitter fa-2x" aria-hidden="true"></i>
+        </a>
+        <a class="btn btn-lg" href="#" role="button">
+          <i class="fa fa-facebook fa-2x" aria-hidden="true"></i>
+        </a>
+        <a class="btn btn-lg" href="#" role="button">
+          <i class="fa fa-linkedin fa-2x" aria-hidden="true"></i>
+        </a>
+        <a class="btn btn-lg" href="#" role="button">
+          <i class="fa fa-y-combinator fa-2x" aria-hidden="true"></i>
+        </a>
+      </div>
+      <div class="modal-footer">
+        <div class="form-group w-100">
+          <div class="input-group input-group-lg">
+            <input type="text" id="shareLink" class="form-control lead" value="{{ page.url | absolute_url }}">
+            <span class="input-group-btn">
+              <button class="btn btn-secondary" id="copyButton" type="submit" data-clipboard-target="#shareLink" data-toggle="tooltip" data-placement="bottom" title="Copied!">
+                <i class="fa fa-clipboard" aria-hidden="true" alt="Copy to clipboard"></i>
+              </button>
+            </span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
 <div class="jumbotron jumbotron-fluid my-0"
 data-parallax="scroll"
 data-image-src="{{ page.image | default: "/assets/images/polys/gop.jpg" | relative_url }}">
@@ -26,7 +65,7 @@ data-image-src="{{ page.image | default: "/assets/images/polys/gop.jpg" | relati
 
 <section class="container w-100" style="background-color: white;">
   <div class="row justify-content-center">
-    <div class="col-11 col-sm-10 col-md-9 col-lg-7 col-xl-7">
+    <div class="col-11 col-sm-10 col-md-9 col-lg-8 col-xl-7">
       <p>{{ content }}</p>
       <div class="clearfix">
         {% if page.previous.url %}
