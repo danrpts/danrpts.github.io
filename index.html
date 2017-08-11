@@ -20,8 +20,8 @@ layout: default
     <div class="card-columns">
       {% for post in paginator.posts %}
       <div class="card d-inline-block m-1">
-        {% if post.image.feature  %}
-        <img class="card-img-top img-fluid hidden-sm-down" src="{{ "/assets/images/heros/" | append: post.image.feature | relative_url }}" alt="Card image cap">
+        {% if post.image  %}
+        <img class="card-img-top img-fluid hidden-sm-down" src="{{ post.image | relative_url }}" alt="Card image cap">
         {% endif %}
         <div class="card-block">
           <h4 class="card-title"><a href="{{ post.url | relative_url }}">{{ post.title }}</a></h4>

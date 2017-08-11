@@ -5,8 +5,7 @@ date: 2017-03-14 00:00:00
 last_modified_at: 2017-03-14 00:00:00
 categories: lorem ipsum
 tags: [phasellus, finibus]
-image:
-  feature: pic01.jpg
+image: /assets/images/blurs/purple.jpg
 ---
 Cras quis sem nunc. In vitae malesuada metus, sit amet tincidunt diam. Pellentesque placerat pretium varius. Phasellus quis ante sagittis, egestas erat at, commodo elit. Vestibulum maximus pharetra lectus ac finibus. Nunc tristique arcu eget lobortis pellentesque. Donec ante nunc, efficitur ut nisl vitae, fringilla laoreet dolor. Mauris finibus augue eros. Nulla eu massa sed nulla efficitur finibus vitae sit amet mi.
 <!--more-->

@@ -1,10 +1,8 @@
 ---
 layout: default
 ---
-<div class="jumbotron jumbotron-fluid my-0"
-{% if page.image.feature %}
-data-parallax="scroll" data-image-src="{{ "/assets/images/heros/" | append: page.image.feature | relative_url }}"
-{% endif %}>
+<div class="jumbotron jumbotron-fluid my-0" data-parallax="scroll"
+data-image-src="{{ page.image | default: "/assets/images/polys/techno.jpg" | relative_url }}">
   <div class="container">
     <h1 class="display-3">{{ page.title }}</h1>
     {% include time.html %}
@@ -20,7 +18,7 @@ data-parallax="scroll" data-image-src="{{ "/assets/images/heros/" | append: page
 
 {% include navbar.html %}
 
-<section class="container">
+<section class="container w-100" style="background-color: white;">
   <div class="row justify-content-center">
     <div class="col-11 col-sm-10 col-md-9 col-lg-7 col-xl-7">
       <p>{{ content }}</p>

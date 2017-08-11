@@ -7,7 +7,6 @@ last_modified_at: 2017-06-23 00:00:00
 categories: lorem ipsum
 tags: nullam
 image:
-  feature:
 ---
 Nam dictum risus a metus gravida volutpat. Nam eget bibendum sem. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Maecenas vitae velit tincidunt, facilisis orci eu, iaculis odio. Sed posuere sit amet ante a vestibulum. Aliquam erat volutpat.
  <!--more-->

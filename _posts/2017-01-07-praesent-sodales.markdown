@@ -5,8 +5,7 @@ date: 2017-01-07 00:00:00
 last_modified_at: 2017-01-07 00:00:00
 categories: lorem ipsum
 tags: sodales
-image:
-  feature: pic02.jpg
+image: /assets/images/blurs/teal.jpg
 ---
 Aliquam commodo elementum tellus, sed dignissim metus accumsan varius. Quisque orci metus, vehicula sit amet dictum a, cursus et nunc. Suspendisse facilisis egestas orci, at pretium odio tincidunt sed. Vivamus ligula arcu, blandit at egestas sed, euismod pulvinar ligula. Nullam tortor nisi, placerat mattis metus et, rhoncus sollicitudin nunc. Etiam ac faucibus massa. Phasellus finibus lorem ac fringilla convallis.
 

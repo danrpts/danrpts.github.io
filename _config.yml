@@ -22,7 +22,7 @@ description: crunchy techno cereal
 baseurl:
 url: https://danrpts.github.io
 repo: https://github.com/danrpts.github.io
-paginate: 3
+paginate: 6
 
 disqus_shortname: https-danrpts-github-io
 google_analytics: UA-104085609-1
@@ -61,7 +61,7 @@ social:
 author:
   name: Daniel Peterson
   twitter:
-  picture: /assets/images/heros/pic07.jpg
+  picture: /assets/images/thumbnails/me.jpg
 
 
 # Server
