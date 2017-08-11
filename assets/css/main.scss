@@ -28,11 +28,11 @@ div[data-parallax="scroll"] {
   }
 }
 img.card-img-top {
+  filter: grey;
   -webkit-filter: grayscale(100%);
   -moz-filter:    grayscale(100%);
   -ms-filter:     grayscale(100%);
   -o-filter:      grayscale(100%);
-  filter: grey;
   transition: all 300ms ease;
 }
 
@@ -42,5 +42,4 @@ img.card-img-top:hover {
     -moz-filter:    grayscale(0%);
     -ms-filter:     grayscale(0%);
     -o-filter:      grayscale(0%);
-    cursor: pointer;
 }

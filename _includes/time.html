@@ -1,8 +1,0 @@
-<!-- credit: https://carlosbecker.com/posts/jekyll-reading-time-without-plugins/ -->
-{% assign words = content | number_of_words %}
-{% if words < 360 %}
-  {% assign time = 1 %}
-{% else %}
-  {% assign time = words | divided_by: 180 %}
-{% endif %}
-<!-- end credit -->

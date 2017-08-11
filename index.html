@@ -21,12 +21,19 @@ layout: default
       {% for post in paginator.posts %}
       <div class="card d-inline-block m-1">
         {% if post.image  %}
-        <img class="card-img-top img-fluid hidden-sm-down" src="{{ post.image | relative_url }}" alt="Card image cap">
+        <a href="{{ post.url | relative_url }}">
+          <img class="card-img-top img-fluid hidden-sm-down" src="{{ post.image | relative_url }}" alt="...">
+        </a>
         {% endif %}
         <div class="card-block">
           <h4 class="card-title"><a href="{{ post.url | relative_url }}">{{ post.title }}</a></h4>
           <p class="card-text">{{ post.excerpt | strip_html | normalize_whitespace | truncate: 60 | escape }}</p>
-          {% include time.html %}
+          {% assign words = post.content | number_of_words %}
+          {% if words < 360 %}
+            {% assign time = 1 %}
+          {% else %}
+            {% assign time = words | divided_by: 180 %}
+          {% endif %}
           <p class="card-text my-0">
             <small class="text-muted">
               {{ post.date | date: "%b %-d" }}
