@@ -27,3 +27,20 @@ div[data-parallax="scroll"] {
     column-count: 2 !important;
   }
 }
+img.card-img-top {
+  -webkit-filter: grayscale(100%);
+  -moz-filter:    grayscale(100%);
+  -ms-filter:     grayscale(100%);
+  -o-filter:      grayscale(100%);
+  filter: grey;
+  transition: all 300ms ease;
+}
+
+img.card-img-top:hover {
+    filter: none;
+    -webkit-filter: grayscale(0%);
+    -moz-filter:    grayscale(0%);
+    -ms-filter:     grayscale(0%);
+    -o-filter:      grayscale(0%);
+    cursor: pointer;
+}
