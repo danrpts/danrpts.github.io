@@ -5,7 +5,7 @@ date: 2017-07-20 00:00:00
 last_modified_at: 2017-07-20 00:00:00
 categories: lorem ipsum
 tags: [etiam, vitae]
-image: /assets/images/blurs/deep-blue.jpg
+image: /assets/images/blurs/ocean.jpg
 ---
 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent id ex malesuada, porta enim aliquam, feugiat lacus. Sed tempus ligula lorem, eu malesuada orci elementum quis. Vestibulum ut luctus libero, id auctor libero. Suspendisse feugiat eros eget libero vulputate viverra. Vestibulum vitae efficitur lacus. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Cras lacus purus, auctor vitae pellentesque id, lobortis tincidunt velit. Cras vel lacinia tortor. Etiam ac imperdiet erat. Donec sollicitudin fringilla egestas. Mauris vel eros ipsum. Curabitur mattis quis est ultricies blandit.
 <!--more-->
