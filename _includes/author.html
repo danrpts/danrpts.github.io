@@ -1,0 +1,14 @@
+<div class="container my-3">
+  <div class="row align-items-center justify-content-center">
+      {% if site.author.picture %}
+      <img width="64" height="64" src="{{ site.author.picture | relative_url }}" alt="{{ site.author.name }}" class="rounded-circle img-fluid hidden-sm-down">
+      {% else %}
+      <i class="fa fa-user-circle-o fa-4x image-fluid hidden-sm-down" aria-hidden="true"></i>
+      {% endif %}
+    <div class="col">
+      <p class="text-justify lead m-0">
+        Hi, I'm <a href="{{ "/about" | relative_url }}">{{ site.author.name }}</a>. A techno explorer of the digital age.</a> Welcome to my blog where you can discover interesting articles about technology, and learn about some projects I'm working on.
+      </p>
+    </div>
+  </div>
+</div>

@@ -7,11 +7,28 @@
       <img src="{{ "/assets/images/logo-text-small-techno.svg" | relative_url }}" width="30" height="30" alt="">
     </a>
 
+    {% if page.id  %}
+    <a type="button" class="btn btn-outline-primary" href="#">Share</a>
+    {% endif %}
+
+    {% if page.url | split:'page' | first == "/" }} %}
+      {% if paginator.previous_page %}
+      <a type="button" class="btn btn-outline-primary" href="{{ paginator.previous_page_path | relative_url }}">Back</a>
+      {% endif %}
+      &nbsp;
+      {% if paginator.next_page %}
+      <a type="button" class="btn btn-outline-primary" href="{{ paginator.next_page_path | relative_url }}">Next</a>
+      {% endif %}
+    {% endif %}
+
     <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
       <ul class="navbar-nav mr-auto mt-2 mt-md-0">
+
+
+
       </ul>
       <form class="form-inline my-2 my-lg-0" method="get" action="{{ "/search" | relative_url }}">
-        <input class="form-control mr-sm-2" type="text" placeholder="Search anything" name="q">
+        <input class="form-control mr-sm-2" type="text" placeholder="Search anything ..." name="q">
         <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Go!</button>
       </form>
     </div>

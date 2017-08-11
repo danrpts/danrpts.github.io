@@ -1,10 +1,9 @@
-<section class="container">
+<section class="container mt-5 mb-2">
   <div class="row justify-content-center">
     <div class="col-11 col-sm-10 col-md-9 col-lg-7 col-xl-7">
       <h4 class="text-center display-4">Stay tuned</h4>
-      <p class="text-justify lead">
-        Hi, I'm <a href="{{ "/about" | relative_url }}">{{ site.author.name }}</a>. A techno explorer in the age of the <a href="http://phrack.org/issues/7/3.html">"electron and the switch."</a> This is my blog where you may discover interesting articles and learn about some projects I'm working on. Follow me on github <a href="http://github.com/{{site.github.username}}" target="_blank">@danrpts</a>, or subscribe for updates:
-      </p>
+      {% include author.html %}
+      <p class="text-center lead">P.S. Don't forget to subscribe!</p>
       <div class="text-center">
         <form action="{{ mailchimp }}" method="post" target="_blank" novalidate>
           <div class="form-group">
@@ -12,7 +11,7 @@
               <div class="input-group input-group-lg">
                 <input type="text" class="form-control lead" placeholder="Enter your email address ..." name="{{ mailchimp }}">
                 <span class="input-group-btn">
-                  <button class="btn btn-secondary" type="submit"><span class="lead">Subscribe!</span></button>
+                  <button class="btn btn-outline-primary" type="submit"><span class="lead">Subscribe</span></button>
                 </span>
               </div>
             </div>

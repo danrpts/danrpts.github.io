@@ -7,6 +7,7 @@ permalink: /:title/
 
 # Plugins
 gems:
+  - jekyll-paginate
   - jekyll-sitemap
   - jekyll-seo-tag
   - jekyll-feed
@@ -21,16 +22,14 @@ description: crunchy techno cereal
 baseurl:
 url: https://danrpts.github.io
 repo: https://github.com/danrpts.github.io
+paginate: 3
 
-rss:                    #rss feed url
-
-icon:
-disqus:
+disqus_shortname: https-danrpts-github-io
 google_analytics: UA-104085609-1
 google_search: 003159598952603805440:eizdvpyonms
 google_ads: ca-pub-9333758446188935
 mailchimp:
-  
+
 # Asset Paths
 css_folder:  "/assets/css"
 js_folder:  "/assets/javascripts"
@@ -62,7 +61,7 @@ social:
 author:
   name: Daniel Peterson
   twitter:
-  picture:
+  picture: /assets/images/heros/pic07.jpg
 
 
 # Server
@@ -70,19 +69,12 @@ destination:      	 ./_site
 
 # Excluded From Jekyll Builds
 exclude:
-  - .editorconfig
   - .gitignore
-  - bower.json
-  - composer.json
   - CONTRIBUTING.md
   - CNAME
   - LICENSE
-  - Gruntfile.js
-  - package.json
-  - node_modules
   - README.md
-  - sass
-  - haml
+  - TODO.md
 
 # Front Matter Defaults
 defaults:
@@ -91,4 +83,4 @@ defaults:
       type: posts
     values:
       layout: default
-read_time: true
+      comments: true
