@@ -2,3 +2,4 @@
 - [ ] ascii art game on 404
 - [ ] polyfill position: sticky
 - [ ] fix search via google
+- [ ] scrollspy for post headers
