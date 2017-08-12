@@ -2,7 +2,7 @@
   <div class="row align-items-center justify-content-center">
       {% if site.author.picture %}
       <a href="{{ "/about" | relative_url }}">
-        <img width="64" height="64" src="{{ site.author.picture | relative_url }}" alt="{{ site.author.name }}" class="rounded-circle img-fluid hidden-sm-down">
+        <img width="64" height="64" src="{{ site.author.picture }}" alt="{{ site.author.name }}" class="rounded-circle img-fluid hidden-sm-down">
       </a>
       {% else %}
       <i class="fa fa-user-circle-o fa-4x image-fluid hidden-sm-down" aria-hidden="true"></i>
