@@ -19,7 +19,7 @@ layout: default
   <div class="row justify-content-center">
     <div class="card-columns">
       {% for post in paginator.posts %}
-      <div class="card d-inline-block">
+      <div class="card d-inline-block mx-1">
         {% if post.image %}
         <a href="{{ post.url | relative_url }}">
           <img class="card-img-top d-none d-sm-block" src="{{ post.image | relative_url }}" aria-hidden="true">
@@ -47,6 +47,12 @@ layout: default
       </div>
       {% endfor %}
     </div>
+  </div>
+</section>
+
+<section class="container mt-5">
+  <div class="row justify-content-center">
+    {% include paginate.html %}
   </div>
 </section>
 
