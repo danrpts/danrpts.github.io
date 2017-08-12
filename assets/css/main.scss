@@ -1,11 +1,11 @@
 ---
 ---
 
-@media (max-width: 767px) {
-  .navbar .container {
-    width: 100%;
-  }
-}
+// @media (max-width: 767px) {
+//   .navbar .container {
+//     width: 100%;
+//   }
+// }
 
 .sticky-top.is-sticky {
   position: fixed;
@@ -27,6 +27,7 @@ div[data-parallax="scroll"] {
     column-count: 2 !important;
   }
 }
+
 img.card-img-top {
   filter: grey;
   -webkit-filter: grayscale(100%);

@@ -19,13 +19,13 @@ layout: default
   <div class="row justify-content-center">
     <div class="card-columns">
       {% for post in paginator.posts %}
-      <div class="card d-inline-block m-1">
-        {% if post.image  %}
+      <div class="card d-inline-block">
+        {% if post.image %}
         <a href="{{ post.url | relative_url }}">
-          <img class="card-img-top img-fluid hidden-sm-down" src="{{ post.image | relative_url }}" alt="...">
+          <img class="card-img-top d-none d-sm-block" src="{{ post.image | relative_url }}" aria-hidden="true">
         </a>
         {% endif %}
-        <div class="card-block">
+        <div class="card-body">
           <h4 class="card-title"><a href="{{ post.url | relative_url }}">{{ post.title }}</a></h4>
           <p class="card-text">{{ post.excerpt | strip_html | normalize_whitespace | truncate: 60 | escape }}</p>
           {% assign words = post.content | number_of_words %}
