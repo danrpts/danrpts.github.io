@@ -3,9 +3,8 @@ layout: default
 permalink: /404.html
 ---
 {% include navbar.html %}
-<div class="jumbotron jumbotron-fluid"
-data-parallax="scroll"
-data-parallax="scroll" data-image-src="{{ "/assets/images/polys/byg.jpg" | relative_url }}">
+<div class="jumbotron jumbotron-fluid jumbotron-bg my-0"
+     style="background: url({{ page.image | default: "/assets/images/polys/gop.jpg" | relative_url }}) no-repeat center center;">
   <div class="container">
     <p class="lead text-center mt-3">¯\_(ツ)_/¯</p>
     <h1 class="display-1 text-center">404</h1>

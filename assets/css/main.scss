@@ -16,14 +16,6 @@
   width: 100%;
 }
 
-div[data-parallax="scroll"] {
-   background: transparent !important;
-   .color-overlay {
-      color: white;
-      text-shadow: #444 0 1px 1px;
-   }
-}
-
 .card > a.card-link {
   position: absolute;
   top: 0;
@@ -54,4 +46,15 @@ div[data-parallax="scroll"] {
     -moz-filter:    grayscale(0%);
     -ms-filter:     grayscale(0%);
     -o-filter:      grayscale(0%);
+}
+
+.jumbotron-bg {
+  //position: fixed;
+  //width: 100%;
+  //height: 350px; /*same height as jumbotron */
+  //top: 0;
+  //left: 0;
+  //z-index: -1;
+   color: white;
+   text-shadow: #444 0 1px 1px;
 }

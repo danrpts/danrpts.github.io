@@ -4,34 +4,38 @@ layout: default
 
 {% include share.html %}
 
-<div class="jumbotron jumbotron-fluid my-0"
-data-parallax="scroll"
-data-image-src="{{ page.image | default: "/assets/images/blurs/blue.jpg" | relative_url }}">
+<div class="jumbotron jumbotron-fluid jumbotron-bg my-0"
+     style="background: url({{ page.image | default: "/assets/images/blurs/blue.jpg" | relative_url }}) no-repeat center center;">
   <div class="container">
-
-    <div id="more" class="d-none">{% include postinate.html %}</div>
-    <div id="less">
-      <h1 class="display-3 color-overlay">{{ page.title }}</h1>
-      {% assign words = content | number_of_words %}
-      {% if words < 360 %}
-        {% assign time = 1 %}
-      {% else %}
-        {% assign time = words | divided_by: 180 %}
+    <h1 class="display-3">{{ page.title }}</h1>
+    {% assign words = content | number_of_words %}
+    {% if words < 360 %}
+      {% assign time = 1 %}
+    {% else %}
+      {% assign time = words | divided_by: 180 %}
+    {% endif %}
+    <p class="lead">
+      {{ page.date | date: "%b %-d" }}
+      &middot; {{ time }} min read
+      {% if site.disqus_shortname and page.comments %}
+      &middot; <a href="{{ post.url | absolute_url }}#disqus_thread">0 Comments</a>
       {% endif %}
-      <p class="lead color-overlay">
-        {{ page.date | date: "%b %-d" }}
-        &middot; {{ time }} min read
-        {% if site.disqus_shortname and page.comments %}
-        &middot; <a href="{{ post.url | absolute_url }}#disqus_thread">0 Comments</a>
-        {% endif %}
-      </p>
-    </div>
+    </p>
   </div>
 </div>
 
 {% include navbar.html %}
 
-<section class="container-fluid" style="background-color: white;">
+<section class="container-fluid mt-3 d-none" id="more">
+  <div class="row">
+    <div class="col">
+      <div>{% include postinate.html %}</div>
+      <hr>
+    </div>
+  </div>
+</section>
+
+<section class="container-fluid mt-3">
   <div class="row justify-content-center">
     <div class="col-11 col-sm-10 col-md-9 col-lg-8 col-xl-7">
       <p>{{ content }}</p>
