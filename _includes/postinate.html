@@ -1,0 +1,30 @@
+<div class="card-deck">
+  {% for post in site.posts offset:0 limit:4 %}
+  {% if post.title == page.title %}
+
+  {% else %}
+  {% assign words = post.content | number_of_words %}
+  {% if words < 360 %}
+    {% assign time = 1 %}
+  {% else %}
+    {% assign time = words | divided_by: 180 %}
+  {% endif %}
+  <div class="card">
+    <a class="card-link" href="{{ post.url | relative_url}}"></a>
+    <div class="card-body">
+      <h4 class="card-title">{{ post.title }}</h4>
+      <p class="card-text">{{ post.excerpt | strip_html | normalize_whitespace | truncate: 60 | escape }}</p>
+    </div>
+    <div class="card-footer">
+      <small class="text-muted">
+        {{ post.date | date: "%b %-d" }}
+        &middot; {{ time }} min read
+        {% if site.disqus_shortname and post.comments %}
+        &middot; <a href="{{ post.url | absolute_url }}#disqus_thread">0 Comments</a>
+        {% endif %}
+      </small>
+    </div>
+  </div>
+  {% endif %}
+  {% endfor %}
+</div>

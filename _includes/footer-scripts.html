@@ -24,6 +24,12 @@
 
     new Clipboard('#copyButton');
 
+    $('button[data-toggle="#more"]').click(function() {
+      $('#more').toggleClass('d-none');
+      $('#less').toggleClass('d-none');
+    });
+
+
     function stickyToggle(sticky, stickyWrapper, scrollElement) {
       var stickyHeight = sticky.outerHeight();
       var stickyTop = stickyWrapper.offset().top;

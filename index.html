@@ -20,13 +20,12 @@ layout: default
     <div class="card-columns">
       {% for post in paginator.posts %}
       <div class="card d-inline-block mx-1">
+        <a class="card-link" href="{{ post.url | relative_url}}"></a>
         {% if post.image %}
-        <a href="{{ post.url | relative_url }}">
-          <img class="card-img-top d-none d-sm-block" src="{{ post.image | relative_url }}" aria-hidden="true">
-        </a>
+        <img class="card-img-top d-none d-sm-block" src="{{ post.image | relative_url }}" aria-hidden="true">
         {% endif %}
         <div class="card-body">
-          <h4 class="card-title"><a href="{{ post.url | relative_url }}">{{ post.title }}</a></h4>
+          <h4 class="card-title">{{ post.title }}</h4>
           <p class="card-text">{{ post.excerpt | strip_html | normalize_whitespace | truncate: 60 | escape }}</p>
           {% assign words = post.content | number_of_words %}
           {% if words < 360 %}
@@ -34,15 +33,15 @@ layout: default
           {% else %}
             {% assign time = words | divided_by: 180 %}
           {% endif %}
-          <p class="card-text my-0">
-            <small class="text-muted">
-              {{ post.date | date: "%b %-d" }}
-              &middot; {{ time }} min read
-              {% if site.disqus_shortname and post.comments %}
-              &middot; <a href="{{ post.url | absolute_url }}#disqus_thread">0 Comments</a>
-              {% endif %}
-            </small>
-          </p>
+        </div>
+        <div class="card-footer">
+          <small class="text-muted">
+            {{ post.date | date: "%b %-d" }}
+            &middot; {{ time }} min read
+            {% if site.disqus_shortname and post.comments %}
+            &middot; <a href="{{ post.url | absolute_url }}#disqus_thread">0 Comments</a>
+            {% endif %}
+          </small>
         </div>
       </div>
       {% endfor %}

@@ -18,8 +18,19 @@
 
 div[data-parallax="scroll"] {
    background: transparent !important;
-   color: white;
-   text-shadow: #444 0 1px 1px;
+   .color-overlay {
+      color: white;
+      text-shadow: #444 0 1px 1px;
+   }
+}
+
+.card > a.card-link {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: calc(100% - 49px); // do not overlay footer (it has links)
+  width: 100%;
+  z-index: 100;
 }
 
 .card-columns {
@@ -28,7 +39,7 @@ div[data-parallax="scroll"] {
   }
 }
 
-img.card-img-top {
+.card > img.card-img-top {
   filter: grey;
   -webkit-filter: grayscale(100%);
   -moz-filter:    grayscale(100%);
@@ -37,7 +48,7 @@ img.card-img-top {
   transition: all 300ms ease;
 }
 
-img.card-img-top:hover {
+.card:hover > img.card-img-top {
     filter: none;
     -webkit-filter: grayscale(0%);
     -moz-filter:    grayscale(0%);

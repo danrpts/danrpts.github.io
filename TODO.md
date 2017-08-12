@@ -3,3 +3,4 @@
 - [ ] polyfill position: sticky
 - [ ] fix search via google
 - [ ] scrollspy for post headers
+- [x] fix comments link behind <a> tag
