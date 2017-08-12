@@ -23,49 +23,37 @@ baseurl:
 url: https://danrpts.github.io
 repo: https://github.com/danrpts.github.io
 paginate: 6
-
 disqus_shortname: https-danrpts-github-io
 google_analytics: UA-104085609-1
 google_search: 003159598952603805440:eizdvpyonms
 google_ads: ca-pub-9333758446188935
+
+# TODO: Mailchimp
 mailchimp:
 
-# Asset Paths
-css_folder:  "/assets/css"
-js_folder:  "/assets/javascripts"
+# TODO: Asset Paths
+css_folder: "/assets/css"
+js_folder: "/assets/javascripts"
 img_folder: "/assets/images"
 
-# SEO Settings
+# TODO: SEO Settings
 google_site_verification :
 bing_site_verification   :
 alexa_site_verification  :
 yandex_site_verification :
 
-# Social Sharing
-#twitter:
-  #username               :
-#github:
-  #username               : "danrpts"
-#linkedin:
-  #username               : "danrpts"
-#facebook:
-  #username               :
-  #app_id                 :
-
-# Social Profiles
-social:
-  name                   : "Daniel Peterson"
-  links:
-    - "https://github.com/danrpts"
-
+# Site Authors
 author:
   name: Daniel Peterson
-  twitter:
-  picture: /assets/images/thumbnails/me.jpg
+  picture: https://avatars.githubusercontent.com/danrpts
 
-
-# Server
-destination:      	 ./_site
+# Social
+github:
+  username               : "danrpts"
+twitter:
+  username               : "danrpts"
+linkedin:
+  username               : "danrpts"
 
 # Excluded From Jekyll Builds
 exclude:

@@ -7,28 +7,47 @@
       <img src="{{ "/assets/images/logo-text-small-techno.svg" | relative_url }}" width="30" height="30" alt="">
     </a>
 
-    {% if page.id  %}
-    <button type="button" class="btn btn-outline-primary align-middle" data-toggle="modal" data-target="#shareModal">
-      Share <i class="fa fa-share-alt" aria-hidden="true"></i>
-    </button>
-    {% endif %}
-
-    {% if page.url | split:'page' | first == "/" }} %}
-      {% if paginator.previous_page %}
-      <a type="button" class="btn btn-outline-primary" href="{{ paginator.previous_page_path | relative_url }}">Previous Page</a>
-      {% endif %}
-      &nbsp;
-      {% if paginator.next_page %}
-      <a type="button" class="btn btn-outline-primary" href="{{ paginator.next_page_path | relative_url }}">Next Page</a>
-      {% endif %}
-    {% endif %}
-
     <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
-      <ul class="navbar-nav mr-auto mt-2 mt-md-0">
+      <ul class="navbar-nav mr-auto">
+
+        {% if page.url | split:'page' | first == "/" }} %}
+          {% if paginator.previous_page %}
+          <li class="nav-item mr-2 my-2 my-lg-0">
+            <a type="button" class="btn btn-outline-primary" href="{{ paginator.previous_page_path | relative_url }}">Previous Page</a>
+          </li>
+          {% endif %}
+          {% if paginator.next_page %}
+          <li class="nav-item mr-2 my-2 my-lg-0">
+            <a type="button" class="btn btn-outline-primary" href="{{ paginator.next_page_path | relative_url }}">Next Page</a>
+          </li>
+          {% endif %}
+        {% endif %}
+
+        {% if page.id  %}
+        <li class="nav-item mr-2 my-2 my-lg-0">
+          <button type="button" class="btn btn-outline-primary">
+            More
+          </button>
+        </li>
+        <li class="nav-item mr-2 my-2 my-lg-0">
+          <button type="button" class="btn btn-outline-primary" data-toggle="modal" data-target="#shareModal">
+            Share <i class="fa fa-share-alt" aria-hidden="true"></i>
+          </button>
+        </li>
+        {% endif %}
+
       </ul>
       <form class="form-inline my-2 my-lg-0" method="get" action="{{ "/search" | relative_url }}">
-        <input class="form-control mr-sm-2" type="text" placeholder="Search anything ..." name="q">
-        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Go!</button>
+
+        <div class="form-group">
+          <div class="input-group">
+            <input class="form-control lead" type="text" placeholder="Search anything ..." name="q">
+            <span class="input-group-btn">
+              <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Go!</button>
+            </span>
+          </div>
+        </div>
+
       </form>
     </div>
   </div>
