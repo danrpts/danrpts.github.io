@@ -30,6 +30,8 @@ google_ads: ca-pub-9333758446188935
 
 # TODO: Mailchimp
 mailchimp:
+  query: //github.us16.list-manage.com/subscribe/post?u=e40514466fe2ed7eb4018735e&id=93118f9da3
+  nobot: b_e40514466fe2ed7eb4018735e_93118f9da3
 
 # TODO: Asset Paths
 css_folder: "/assets/css"
@@ -45,7 +47,7 @@ yandex_site_verification :
 # Site Authors
 author:
   name: Daniel Peterson
-  picture: https://avatars.githubusercontent.com/danrpts
+  picture: //avatars.githubusercontent.com/danrpts
 
 # Social
 github:
