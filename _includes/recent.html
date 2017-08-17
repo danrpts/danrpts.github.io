@@ -1,0 +1,25 @@
+<!-- /_includes/recent.html -->
+<p><small>Recent</small></p>
+<div class="card-deck">
+  {% for post in site.related_posts limit: 3 %}
+    <div class="card">
+      <a class="card-link" href="{{ post.url | relative_url}}"></a>
+      {% if post.image %}
+      <img class="card-img-top" src="{{ post.image | relative_url }}" aria-hidden="true">
+      {% endif %}
+      <div class="card-body">
+        <h4 class="card-title">{{ post.title }}</h4>
+        <p class="card-text">{{ post.excerpt | strip_html | normalize_whitespace | truncate: 60 | escape }}</p>
+      </div>
+      <div class="card-footer">
+        <small class="text-muted">
+          {{ post.date | date: "%b %-d" }}
+          {%if post.read_time %} &middot; {% include read-time.html html=content %} {% endif %}
+          {% if site.disqus_shortname and post.comments %}
+          &middot; <a href="{{ post.url | absolute_url }}#disqus_thread">0 Comments</a>
+          {% endif %}
+        </small>
+      </div>
+    </div>
+  {% endfor %}
+</div>
