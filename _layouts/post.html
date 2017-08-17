@@ -43,7 +43,7 @@ layout: default
           </div>
         </div>
       </div>
-      <div class="jumbotron" style="background: url({{ page.image | site.teaser | relative_url }}) no-repeat center center;"></div>
+      <div class="jumbotron" style="background: url({{ page.image | default: site.teaser | relative_url }}) no-repeat center center;"></div>
       <div id="post-content">
         {{ content }}
       </div>
