@@ -1,0 +1,11 @@
+<div class="jumbotron jumbotron-fluid jumbotron-bg my-0"
+     style="background: url({{ page.image | default: "/assets/images/blurs/blue.jpg" | relative_url }}) no-repeat center center;">
+  <div class="container">
+    <h2 class="display-4 text-truncate">{{ page.title }}</h2>
+    <p class="lead">
+      {{ page.date | date: "%b %-d" }}
+      {%if page.read_time %} &middot; {% include read-time.html html=content %} {% endif %}
+      {%if site.disqus_shortname and page.comments %} &middot; <a href="{{ post.url | absolute_url }}#disqus_thread">0 Comments</a> {% endif %}
+    </p>
+  </div>
+</div>
