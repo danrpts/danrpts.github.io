@@ -1,10 +1,14 @@
-<nav class="navbar sticky-top navbar-expand-lg navbar-light bg-light"
+<!-- /_includes/navbar.html -->
+<nav class="navbar static-top navbar-expand-lg navbar-light bg-light"
      data-toggle="sticky-onscroll"
-     style="background-color: white !important; border-bottom: 1px solid rgba(0,0,0,.15); top: 0em;">
+     style="background-color: white !important;
+            opacity: 0.96;
+            border-bottom: 1px solid rgba(0,0,0,.15);
+            top: 0em;">
   <div class="container">
 
     <a class="navbar-brand" href="{{ "/" | relative_url }}">
-      <img src="{{ "/assets/images/logo-text-small-techno.svg" | relative_url }}" width="30" height="30" alt="">
+      <img src="{{ "/assets/images/logo-text-techno.svg" | relative_url }}" height="30" alt="{{ site.title }}" aria="Home link">
     </a>
 
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggler" aria-controls="navbarToggler" aria-expanded="false" aria-label="Toggle navigation">
@@ -14,21 +18,28 @@
     <div class="collapse navbar-collapse" id="navbarToggler">
 
       <ul class="navbar-nav mr-auto">
-        {% if page.id  %}
-        <li class="nav-item my-2 mx-lg-1">
-          <button data-toggle="#more" type="button" class="btn btn-outline-primary w-100">
-            More
-          </button>
+        {% assign page_url = page.url | absolute_url %}
+        {% assign home_url = "/" | absolute_url %}
+        <li class="nav-item">
+          <a class="nav-link {% if page_url == home_url %} active {% endif %}"
+             href="{{ home_url }}">
+            Home
+          </a>
         </li>
-        <li class="nav-item my-2 mx-lg-1">
-          <button type="button" class="btn btn-outline-primary w-100" data-toggle="modal" data-target="#shareModal">
-            Share
-          </button>
+        {% for html_page in site.html_pages %}
+        {% unless html_page.name == "index.html" or html_page.name == "404.html" %}
+        {% assign html_page_url = html_page.url | absolute_url %}
+        <li class="nav-item">
+          <a class="nav-link {% if page_url ==  html_page_url %} active {% endif %}"
+             href="{{ html_page_url }}">
+            {{ html_page.name | remove: ".html" | capitalize }}
+          </a>
         </li>
-        {% endif %}
+        {% endunless %}
+        {% endfor %}
       </ul>
 
-      <form class="form-inline my-2">
+      <form class="form-inline my-2" action="{{ "/search" | absolute_url }}">
         <div class="form-group w-100">
           <div class="input-group w-100">
             <input class="form-control lead" type="text" placeholder="Search anything ..." name="q" aria-label="Search">
