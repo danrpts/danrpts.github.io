@@ -2,5 +2,19 @@
 - [ ] ascii art game on 404
 - [ ] polyfill position: sticky
 - [ ] fix search via google
-- [ ] scrollspy for post headers
+* [ ] use post headers for navigation
+  - [ ] use right area for scrollspy
+  - [ ] make it sticky
+  - [ ] put in ad
+  - [ ] make it responsive
 - [x] fix comments link behind <a> tag
+- [ ] add bottom margin for browse menu items on small screen
+- [ ] scrollable browse menu in post
+- [x] better solution for social links (using a data file)
+- [ ] url shortener for posts
+- [ ] accessibility
+- [ ] tooltip on link copy
+- [ ] code highlighting
+- [ ] generate thumbnails
+- [ ] favicons
+- [ ] when click toc link, fix offset scroll to header
