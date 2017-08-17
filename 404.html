@@ -1,15 +1,20 @@
 ---
 layout: default
 permalink: /404.html
+sitemap: false
 ---
+
 {% include navbar.html %}
+
 <div class="jumbotron jumbotron-fluid jumbotron-bg my-0"
-     style="background: url({{ page.image | default: "/assets/images/polys/gop.jpg" | relative_url }}) no-repeat center center;">
+     style="background: url({{ page.image | default: "/assets/images/blurs/green.jpg" | relative_url }}) no-repeat center center;">
   <div class="container">
     <p class="lead text-center mt-3">¯\_(ツ)_/¯</p>
     <h1 class="display-1 text-center">404</h1>
     <p class="lead text-center">Are you lost?</p>
   </div>
 </div>
+
 {% include subscribe.html %}
+
 {% include footer.html %}
