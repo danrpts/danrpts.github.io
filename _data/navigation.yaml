@@ -1,0 +1,10 @@
+follow:
+  - title: "GitHub"
+    url: https://github.com/danrpts
+    icon: fa-github
+  - title: "Google+"
+    url: https://plus.google.com/u/danrpts
+    icon: fa-google-plus-circle
+  - title: "LinkedIn"
+    url: https://www.linkedin.com/in/danrpts
+    icon: fa-linkedin
