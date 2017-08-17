@@ -58,3 +58,25 @@
    color: white;
    text-shadow: #444 0 1px 1px;
 }
+
+.sticky-sidebar {
+  @supports (position: sticky) {
+    position: sticky;
+    top: 0rem;
+    max-height: 100vh;
+    overflow-y: auto;
+  }
+  padding-top: 1.5rem;
+  padding-bottom: 1.5rem;
+}
+
+
+.sticky-sidebar-left {
+  order: 0;
+  @extend .sticky-sidebar;
+}
+
+.sticky-sidebar-right {
+  order: 2;
+  @extend .sticky-sidebar;
+}
