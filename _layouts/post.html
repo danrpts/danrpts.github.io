@@ -9,7 +9,7 @@ layout: default
   <div class="row">
 
     <aside class="d-none d-lg-block col-lg-2 sticky-sidebar-left">
-      <div class="text-center" id="sticky-sidebar-share" style="display: none;">
+      <div class="text-center" id="sticky-sidebar-share">
         <small>Share</small>
         {% include share.html %}
       </div>
@@ -43,7 +43,7 @@ layout: default
           </div>
         </div>
       </div>
-      <div class="jumbotron" style="background: url({{ page.image | relative_url }}) no-repeat center center;"></div>
+      <div class="jumbotron" style="background: url({{ page.image | site.teaser | relative_url }}) no-repeat center center;"></div>
       <div id="post-content">
         {{ content }}
       </div>
