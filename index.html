@@ -1,43 +1,26 @@
 ---
 layout: default
 ---
-<header class="container">
-  <div class="row justify-content-center">
-    <div class="col-8 col-sm-7 col-md-6 col-lg-5 col-xl-4">
-      <h1 class="text-hide">
-        <img src="{{ "/assets/images/logo-text-techno.svg" | relative_url }}" class="img-fluid" alt="..." style="width: 100% \9;">
-        {{ site.title }}
-      </h1>
-    </div>
-  </div>
-  <p class="lead text-center">mmm ... {{ site.description }}</p>
-</header>
 
 {% include navbar.html %}
 
-<section class="container my-3">
+<div class="container">
   <div class="row justify-content-center">
-    <div class="card-columns">
+    <main class="card-columns py-md-3">
       {% for post in paginator.posts %}
       <div class="card d-inline-block mx-1">
         <a class="card-link" href="{{ post.url | relative_url}}"></a>
         {% if post.image %}
-        <img class="card-img-top d-none d-sm-block" src="{{ post.image | relative_url }}" aria-hidden="true">
+        <img class="card-img-top" src="{{ post.image | relative_url }}" aria-hidden="true">
         {% endif %}
         <div class="card-body">
           <h4 class="card-title">{{ post.title }}</h4>
           <p class="card-text">{{ post.excerpt | strip_html | normalize_whitespace | truncate: 60 | escape }}</p>
-          {% assign words = post.content | number_of_words %}
-          {% if words < 360 %}
-            {% assign time = 1 %}
-          {% else %}
-            {% assign time = words | divided_by: 180 %}
-          {% endif %}
         </div>
         <div class="card-footer">
           <small class="text-muted">
             {{ post.date | date: "%b %-d" }}
-            &middot; {{ time }} min read
+            {%if post.read_time %} &middot; {% include read-time.html html=content %} {% endif %}
             {% if site.disqus_shortname and post.comments %}
             &middot; <a href="{{ post.url | absolute_url }}#disqus_thread">0 Comments</a>
             {% endif %}
@@ -45,9 +28,9 @@ layout: default
         </div>
       </div>
       {% endfor %}
-    </div>
+    </main>
   </div>
-</section>
+</div>
 
 {% include paginate.html %}
 
