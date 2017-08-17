@@ -20,7 +20,17 @@
   </li>
   {% endif %}
 
-  {% for page in (1..paginator.total_pages) %}
+  {% assign lower = paginator.page | minus: site.paginator_bound %}
+  {% if lower < 1 %}
+  {% assign lower = 1 %}
+  {% endif %}
+
+  {% assign upper = paginator.page | plus: site.paginator_bound %}
+  {% if upper > paginator.total_pages %}
+  {% assign upper = paginator.total_pages %}
+  {% endif %}
+
+  {% for page in (lower..upper) %}
   {% if page == paginator.page %}
   <li class="page-item active">
     <a class="page-link"
