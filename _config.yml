@@ -1,72 +1,81 @@
+# Site config
+#source                   :
+destination              : _site
+title                    : superdan
+description              : Daniel Peterson's Blog
+tagline                  : A bowl of crunchy techno cereal.
+logo                     : /assets/images/logo-text-small-techno.svg
+teaser                   : /assets/images/blurs/blue.jpg
+timezone                 : America/Los_Angeles
+lang                     : en
+encoding                 : utf-8
+words_per_minute         : 200
+repository               : danrpts/danrpts.github.io
+url                      : https://danrpts.github.io
+social:
+  name                   : Daniel Peterson
+  links:
+    #- https://twitter.com/<username>
+    #- https://www.facebook.com/<username>
+    - https://github.com/danrpts
+    - https://www.linkedin.com/in/danrpts
+    - https://plus.google.com/u/danrpts
+webmaster_verifications:
+  google:
+  bing:
+  alexa:
+  yandex:
+google_ad-client         : ca-pub-9333758446188935
+#google_ad-slot           :
+google_analytics         : UA-104085609-1
+google_search            : 003159598952603805440:eizdvpyonms
+feed:
+  path: atom.xml
 
-# Build Settings
+# Site author
+author:
+  name                   : Daniel Peterson
+  uri                    : &uri "https://danrpts.github.io/about/"
+  url                    : *uri
+  #bio                    :
+  picture                : //avatars.githubusercontent.com/danrpts
+  #twitter                : https://twitter.com/<username>
+  #facebook               : https://www.facebook.com/<username>
+  github                 : "https://github.com/danrpts"
+  google_plus            : "https://plus.google.com/u/danrpts"
+
+# MailChimp form
+mailchimp:
+  action                 : //github.us16.list-manage.com/subscribe/post?u=e40514466fe2ed7eb4018735e&id=93118f9da3
+  nobot                  : b_e40514466fe2ed7eb4018735e_93118f9da3
+
+# Disqus comments
+disqus_shortname         : https-danrpts-github-io
+
+# Jekyll Config
+permalink: /:title/
 markdown: kramdown
 highlighter: rouge
 excerpt_seperator: "<!--more-->"
-permalink: /:title/
+paginate: 6 # number of posts per page
+paginator_bound: 2 # max number of lower/upper pages in paginator
+exclude:
+  - .DS_Store
+  - .gitignore
+  - CNAME
+  - LICENSE
+  - README.md
+  - TODO.md
 
-# Plugins
-gems:
+# Gems
+plugins:
   - jekyll-paginate
   - jekyll-sitemap
   - jekyll-seo-tag
   - jekyll-feed
   - jemoji
 
-# Site Settings
-timezone: America/Los_Angeles
-lang: en
-encoding: utf-8
-title: superdan
-description: crunchy techno cereal
-baseurl:
-url: https://danrpts.github.io
-repo: https://github.com/danrpts.github.io
-paginate: 6
-disqus_shortname: https-danrpts-github-io
-google_analytics: UA-104085609-1
-google_search: 003159598952603805440:eizdvpyonms
-google_ads: ca-pub-9333758446188935
-
-# TODO: Mailchimp
-mailchimp:
-  query: //github.us16.list-manage.com/subscribe/post?u=e40514466fe2ed7eb4018735e&id=93118f9da3
-  nobot: b_e40514466fe2ed7eb4018735e_93118f9da3
-
-# TODO: Asset Paths
-css_folder: "/assets/css"
-js_folder: "/assets/javascripts"
-img_folder: "/assets/images"
-
-# TODO: SEO Settings
-google_site_verification :
-bing_site_verification   :
-alexa_site_verification  :
-yandex_site_verification :
-
-# Site Authors
-author:
-  name: Daniel Peterson
-  picture: //avatars.githubusercontent.com/danrpts
-
-# Social
-github:
-  username               : "danrpts"
-twitter:
-  username               : "danrpts"
-linkedin:
-  username               : "danrpts"
-
-# Excluded From Jekyll Builds
-exclude:
-  - .gitignore
-  - CONTRIBUTING.md
-  - CNAME
-  - LICENSE
-  - README.md
-  - TODO.md
-
-# Front Matter Defaults
+# Front matter defaults
 defaults:
   - scope:
       path: "_posts"
@@ -74,3 +83,4 @@ defaults:
     values:
       layout: default
       comments: true
+      read_time: true
