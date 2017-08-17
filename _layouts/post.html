@@ -1,62 +1,83 @@
 ---
 layout: default
 ---
-
-{% include share.html %}
-
-<div class="jumbotron jumbotron-fluid jumbotron-bg my-0"
-     style="background: url({{ page.image | default: "/assets/images/blurs/blue.jpg" | relative_url }}) no-repeat center center;">
-  <div class="container">
-    <h1 class="display-3">{{ page.title }}</h1>
-    {% assign words = content | number_of_words %}
-    {% if words < 360 %}
-      {% assign time = 1 %}
-    {% else %}
-      {% assign time = words | divided_by: 180 %}
-    {% endif %}
-    <p class="lead">
-      {{ page.date | date: "%b %-d" }}
-      &middot; {{ time }} min read
-      {% if site.disqus_shortname and page.comments %}
-      &middot; <a href="{{ post.url | absolute_url }}#disqus_thread">0 Comments</a>
-      {% endif %}
-    </p>
-  </div>
-</div>
+<!-- /_layouts/post.html -->
 
 {% include navbar.html %}
 
-<section class="container-fluid mt-3 d-none" id="more">
+<div class="container">
   <div class="row">
-    <div class="col">
-      <div>{% include postinate.html %}</div>
-      <hr>
-    </div>
-  </div>
-</section>
 
-<section class="container-fluid mt-3">
-  <div class="row justify-content-center">
-    <div class="col-11 col-sm-10 col-md-9 col-lg-8 col-xl-7">
-      <p>{{ content }}</p>
-      <div class="clearfix">
-        {% if page.previous.url %}
-        <span class="float-left">
-          {% for tag in page.tags %}
-            <a href="#" class="badge badge-default">{{ tag }}</a>
-          {% endfor %}
-        </span>
-        {% endif %}
-        {% if page.next.url %}
-        <a class="btn float-right p-0" href="{{ page.next.url | relative_url }}">{{ page.next.title }} &raquo;</a>
-        {% endif %}
+    <aside class="d-none d-lg-block col-lg-2 sticky-sidebar-left">
+      <div class="text-center" id="sticky-sidebar-share" style="display: none;">
+        <small>Share</small>
+        {% include share.html %}
       </div>
-      <hr/>
-      {% include author.html %}
-      <hr/>
-      {% include comments.html %}
-    </div>
-  </div>
-</secion>
+    </aside>
 
-{% include footer.html %}
+    <main class="col-12 col-lg-8 py-md-3 text-justify">
+      <div class="container my-3">
+        <div class="row align-items-center justify-content-center">
+            {% if site.author.picture %}
+            <a href="{{ "/about" | relative_url }}">
+              <img width="64" height="64" src="{{ site.author.picture }}" alt="{{ site.author.name }}" class="rounded-circle img-fluid hidden-sm-down">
+            </a>
+            {% else %}
+            <i class="fa fa-user-circle-o fa-4x image-fluid hidden-sm-down" aria-hidden="true"></i>
+            {% endif %}
+          <div class="col pr-0">
+            <p class="m-0">
+              <small> {{ page.title }}
+              </small>
+            </p>
+            <p class="m-0">
+              <small>by {{ site.author.name }}</small>
+            </p>
+            <p class="m-0">
+              <small>
+                {{ page.date | date: "%b %-d" }}
+                {%if page.read_time %} &middot; {% include read-time.html html=content %} {% endif %}
+                {%if site.disqus_shortname and page.comments %} &middot; <a href="{{ post.url | absolute_url }}#disqus_thread">0 Comments</a> {% endif %}
+              </small>
+            </p>
+          </div>
+        </div>
+      </div>
+      <div class="jumbotron" style="background: url({{ page.image | relative_url }}) no-repeat center center;"></div>
+      <div id="post-content">
+        {{ content }}
+      </div>
+      <p>
+        {% for tag in page.tags %}
+          <a class="btn btn-light" href="{{ "/browse/" | append: tag | absolute_url }}">{{ tag }}</a>
+        {% endfor %}
+      </p>
+      <hr>
+      {% include author.html %}
+    </main>
+    <aside class="d-none d-lg-block col-lg-2 sticky-sidebar-right">
+      <div class="text-left">
+        {% assign my_min = page.toc_min | default: site.toc_min | default: 1 %}
+        {% assign my_max = page.toc_max | default: site.toc_max | default: 3 %}
+        <small>
+        {% include toc.html html=content id="post-toc" class="list-group.list-unstyled" no-li="true" a-class="list-group-item.list-group-item-action.text-truncate" %}
+        </small>
+      </div>
+    </aside>
+
+  </div>
+
+  <div class="row">
+    <section class="col-12">
+      {% include recent.html %}
+    </section>
+  </div>
+
+  <div class="row justify-content-center">
+    <section class="col-12 col-lg-8">
+      {% include comments.html %}
+      {% include mini-footer.html %}
+    </section>
+  </div>
+
+</div>
