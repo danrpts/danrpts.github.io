@@ -6,7 +6,7 @@
       <p class="text-center lead">P.S. Don't forget to subscribe!</p>
       <div class="text-center">
 
-        <form action="{{ site.mailchimp.query | escape }}" method="post" name="mc-embedded-subscribe-form" target="_blank" novalidate>
+        <form action="{{ site.mailchimp.action | url_escape }}" method="post" name="mc-embedded-subscribe-form" target="_blank" novalidate>
           <div class="form-group">
             <div class="input-group input-group-lg">
 
@@ -14,7 +14,7 @@
 
               <!-- real people should not fill this in and expect good things - do not remove this or risk form bot signups-->
               <div style="position: absolute; left: -5000px;" aria-hidden="true">
-                <input type="text" name="{{ site.mailchimp.nobot | escape }}" tabindex="-1" value="">
+                <input type="text" name="{{ site.mailchimp.nobot }}" tabindex="-1" value="">
               </div>
 
               <span class="input-group-btn">
