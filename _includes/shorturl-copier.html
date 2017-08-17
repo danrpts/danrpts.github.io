@@ -1,0 +1,16 @@
+<!-- /_includes/shorturl-copier.html -->
+
+<div class="form-group m-0">
+  <div class="row align-items-center">
+    <div class="col">
+      <div class="input-group">
+        <input type="text" id="shorturl" class="form-control lead disabled" value="{{ page.url | absolute_url }}">
+        <span class="input-group-btn">
+          <button class="btn btn-secondary" id="copyButton" data-clipboard-target="#shorturl" data-toggle="tooltip" data-placement="bottom" title="Copied!">
+            <i class="fa fa-clipboard" aria-hidden="true" alt="Copy to clipboard"></i>
+          </button>
+        </span>
+      </div>
+    </div>
+  </div>
+</div>
