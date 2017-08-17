@@ -1,38 +1,31 @@
-<div class="modal fade" id="shareModal" tabindex="-1" role="dialog" aria-labelledby="shareModalLabel" aria-hidden="true">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-          <h4 class="modal-title display-4 w-100 text-center" id="shareModalLabel">Thanks for<br>:thumbsup: sharing! :thumbsup:</h4>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body text-center">
-        <a class="btn btn-lg" href="#" role="button">
-          <i class="fa fa-twitter fa-2x" aria-hidden="true"></i>
-        </a>
-        <a class="btn btn-lg" href="#" role="button">
-          <i class="fa fa-facebook fa-2x" aria-hidden="true"></i>
-        </a>
-        <a class="btn btn-lg" href="#" role="button">
-          <i class="fa fa-linkedin fa-2x" aria-hidden="true"></i>
-        </a>
-        <a class="btn btn-lg" href="#" role="button">
-          <i class="fa fa-y-combinator fa-2x" aria-hidden="true"></i>
-        </a>
-      </div>
-      <div class="modal-footer">
-        <div class="form-group w-100">
-          <div class="input-group input-group-lg">
-            <input type="text" id="shareLink" class="form-control lead" value="{{ page.url | absolute_url }}">
-            <span class="input-group-btn">
-              <button class="btn btn-secondary" id="copyButton" type="submit" data-clipboard-target="#shareLink" data-toggle="tooltip" data-placement="bottom" title="Copied!">
-                <i class="fa fa-clipboard" aria-hidden="true" alt="Copy to clipboard"></i>
-              </button>
-            </span>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
+<!-- /_includes/share.html -->
+
+{% assign url = page.url | absolute_url | url_encode %}
+{% assign title = page.title | url_encode %}
+{% assign twitter_query = "https://twitter.com/intent/tweet?url=" | append: url | append: "&text=" | append: title %}
+{% assign facebook_query = "https://facebook.com/sharer.php?u=" | append: url | append: "&t=" | append: title %}
+{% assign googleplus_query = "https://plus.google.com/share?url=" | append: url %}
+{% assign linkedin_query = "http://www.linkedin.com/shareArticle?mini=true&url=" | append: url | append: "&title=" | append: title %}
+
+<ul class="list-unstyled">
+  <li>
+    <a class="btn btn-link" href="{{ twitter_query }}{% if site.twitter.username %}{{ "&via=" | append: site.twitter.username }}{% endif %}" rel="nofollow" target="_blank" role="button">
+      <i class="fa fa-twitter fa-2x" aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="btn btn-linky" href="{{ facebook_query }}" rel="nofollow" target="_blank" role="button">
+      <i class="fa fa-facebook fa-2x" aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="btn btn-link" href="{{ googleplus_query }}" rel="nofollow" target="_blank" role="button">
+      <i class="fa fa-google-plus fa-2x" aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="btn btn-link" href="{{ linkedin_query }}" rel="nofollow" target="_blank" role="button">
+      <i class="fa fa-linkedin fa-2x" aria-hidden="true"></i>
+    </a>
+  </li>
+</ul>
