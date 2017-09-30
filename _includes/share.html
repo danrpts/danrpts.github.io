@@ -9,23 +9,23 @@
 
 <ul class="list-unstyled">
   <li>
-    <a class="btn btn-link" href="{{ twitter_query }}{% if site.twitter.username %}{{ "&via=" | append: site.twitter.username }}{% endif %}" rel="nofollow" target="_blank" role="button">
-      <i class="fa fa-twitter fa-2x" aria-hidden="true"></i>
-    </a>
-  </li>
-  <li>
-    <a class="btn btn-linky" href="{{ facebook_query }}" rel="nofollow" target="_blank" role="button">
-      <i class="fa fa-facebook fa-2x" aria-hidden="true"></i>
-    </a>
-  </li>
-  <li>
     <a class="btn btn-link" href="{{ googleplus_query }}" rel="nofollow" target="_blank" role="button">
-      <i class="fa fa-google-plus fa-2x" aria-hidden="true"></i>
+      <i class="fa fa-google-plus" aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="btn btn-link" href="{{ twitter_query }}{% if site.twitter.username %}{{ "&via=" | append: site.twitter.username }}{% endif %}" rel="nofollow" target="_blank" role="button">
+      <i class="fa fa-twitter" aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="btn btn-link muted" href="{{ facebook_query }}" rel="nofollow" target="_blank" role="button">
+      <i class="fa fa-facebook" aria-hidden="true"></i>
     </a>
   </li>
   <li>
     <a class="btn btn-link" href="{{ linkedin_query }}" rel="nofollow" target="_blank" role="button">
-      <i class="fa fa-linkedin fa-2x" aria-hidden="true"></i>
+      <i class="fa fa-linkedin" aria-hidden="true"></i>
     </a>
   </li>
 </ul>

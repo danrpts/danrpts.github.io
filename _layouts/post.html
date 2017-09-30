@@ -3,12 +3,23 @@ layout: default
 ---
 <!-- /_layouts/post.html -->
 
-{% include navbar.html %}
 
-<div class="container">
+<header class="container-fluid" style="border-bottom: 1px solid rgba(0,0,0,.15);">
+  <div class="row justify-content-center">
+    <div class="col-6 col-sm-5 col-md-4 col-lg-3 col-xl-3">
+      <h1 class="text-hide">
+        <a href="{{ "/" | absolute_url }}">
+          <img src="{{ "/assets/images/logo-text-techno.svg" | relative_url }}" class="img-fluid" alt="..." style="width: 100% \9;">
+        </a>
+        {{ site.title }}
+      </h1>
+    </div>
+  </div>
+</header>
+
+<section class="container">
   <div class="row">
-
-    <aside class="d-none d-lg-block col-lg-2 sticky-sidebar-left">
+    <aside class="d-none d-lg-block col-lg-2 sticky-sidebar-left" stlye="margin-top: 30%;">
       <div class="text-center" id="sticky-sidebar-share">
         <small>Share</small>
         {% include share.html %}
@@ -27,11 +38,7 @@ layout: default
             {% endif %}
           <div class="col pr-0">
             <p class="m-0">
-              <small> {{ page.title }}
-              </small>
-            </p>
-            <p class="m-0">
-              <small>by {{ site.author.name }}</small>
+              <small>{{ site.author.name }}</small>
             </p>
             <p class="m-0">
               <small>
@@ -41,8 +48,13 @@ layout: default
               </small>
             </p>
           </div>
+          <a type="button" class="btn btn-outline-dark" href="#">
+            <i class="fa fa-github" aria-hidden="true"></i>
+            Follow
+          </a>
         </div>
       </div>
+      <h1 class="my-4">{{ page.title }}</h1>
       <div class="jumbotron" style="background: url({{ page.image | default: site.teaser | relative_url }}) no-repeat center center;"></div>
       <div id="post-content">
         {{ content }}
@@ -53,31 +65,42 @@ layout: default
         {% endfor %}
       </p>
       <hr>
-      {% include author.html %}
     </main>
-    <aside class="d-none d-lg-block col-lg-2 sticky-sidebar-right">
-      <div class="text-left">
-        {% assign my_min = page.toc_min | default: site.toc_min | default: 1 %}
-        {% assign my_max = page.toc_max | default: site.toc_max | default: 3 %}
-        <small>
-        {% include toc.html html=content id="post-toc" class="list-group.list-unstyled" no-li="true" a-class="list-group-item.list-group-item-action.text-truncate" %}
-        </small>
-      </div>
-    </aside>
 
   </div>
+</section>
 
+<section class="container">
+  <div class="row justify-content-center">
+    <div class="col-11 col-lg-7">
+    {% include author.html %}
+    </div>
+    <div class="col-11 col-lg-7 mt-3 p-0">
+      <a type="button" class="btn btn-outline-dark" href="#">
+        <i class="fa fa-github" aria-hidden="true"></i>
+        Follow
+      </a>
+      <a type="button" class="btn btn-outline-primary" href="#">
+        <i class="fa fa-linkedin" aria-hidden="true"></i>
+      </a>
+      <a type="button" class="btn btn-outline-danger" href="#">
+        <i class="fa fa-google-plus" aria-hidden="true"></i>
+      </a>
+    </div>
+  </div>
+</section>
+
+<section class="container">
   <div class="row">
-    <section class="col-12">
+    <div class="col-12">
       {% include recent.html %}
-    </section>
+    </div>
   </div>
 
   <div class="row justify-content-center">
-    <section class="col-12 col-lg-8">
+    <div class="col-12 col-lg-8">
       {% include comments.html %}
       {% include mini-footer.html %}
-    </section>
+    </div>
   </div>
-
-</div>
+</section>

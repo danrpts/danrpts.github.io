@@ -2,9 +2,22 @@
 layout: default
 ---
 
-{% include navbar.html %}
+<!-- /index.html -->
 
-<div class="container">
+<header class="container-fluid">
+  <div class="row justify-content-center">
+    <div class="col-6 col-sm-5 col-md-4 col-lg-3 col-xl-3">
+      <h1 class="text-hide">
+        <a href="{{ "/" | absolute_url }}">
+          <img src="{{ "/assets/images/logo-text-techno.svg" | relative_url }}" class="img-fluid" alt="..." style="width: 100% \9;">
+        </a>
+        {{ site.title }}
+      </h1>
+    </div>
+  </div>
+</header>
+
+<div class="container mt-4">
   <div class="row justify-content-center">
     <main class="card-columns py-md-3">
       {% for post in paginator.posts %}
@@ -36,4 +49,10 @@ layout: default
 
 {% include subscribe.html %}
 
-{% include footer.html %}
+<div class="container">
+  <div class="row justify-content-center">
+    <section class="col-12 col-lg-8">
+      {% include mini-footer.html %}
+    </section>
+  </div>
+</div>

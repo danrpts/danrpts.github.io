@@ -7,10 +7,6 @@
             top: 0em;">
   <div class="container">
 
-    <a class="navbar-brand" href="{{ "/" | relative_url }}">
-      <img src="{{ "/assets/images/logo-text-techno.svg" | relative_url }}" height="30" alt="{{ site.title }}" aria="Home link">
-    </a>
-
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggler" aria-controls="navbarToggler" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
@@ -38,17 +34,6 @@
         {% endunless %}
         {% endfor %}
       </ul>
-
-      <form class="form-inline my-2" action="{{ "/search" | absolute_url }}">
-        <div class="form-group w-100">
-          <div class="input-group w-100">
-            <input class="form-control lead" type="text" placeholder="Search anything ..." name="q" aria-label="Search">
-            <span class="input-group-btn">
-              <button class="btn btn-outline-success" type="submit">Go!</button>
-            </span>
-          </div>
-        </div>
-      </form>
 
     </div>
   </div>
