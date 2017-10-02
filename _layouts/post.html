@@ -3,32 +3,16 @@ layout: default
 ---
 <!-- /_layouts/post.html -->
 
+{% include header.html %}
 
-<header class="container-fluid" style="border-bottom: 1px solid rgba(0,0,0,.15);">
+<!-- post introduction -->
+<div class="container my-4">
   <div class="row justify-content-center">
-    <div class="col-6 col-sm-5 col-md-4 col-lg-3 col-xl-3">
-      <h1 class="text-hide">
-        <a href="{{ "/" | absolute_url }}">
-          <img src="{{ "/assets/images/logo-text-techno.svg" | relative_url }}" class="img-fluid" alt="..." style="width: 100% \9;">
-        </a>
-        {{ site.title }}
-      </h1>
-    </div>
-  </div>
-</header>
+    <div class="col-12 col-lg-8 text-justify">
 
-<section class="container">
-  <div class="row">
-    <aside class="d-none d-lg-block col-lg-2 sticky-sidebar-left" stlye="margin-top: 30%;">
-      <div class="text-center" id="sticky-sidebar-share">
-        <small>Share</small>
-        {% include share.html %}
-      </div>
-    </aside>
-
-    <main class="col-12 col-lg-8 py-md-3 text-justify">
-      <div class="container my-3">
+      <div class="container">
         <div class="row align-items-center justify-content-center">
+
             {% if site.author.picture %}
             <a href="{{ "/about" | relative_url }}">
               <img width="64" height="64" src="{{ site.author.picture }}" alt="{{ site.author.name }}" class="rounded-circle img-fluid hidden-sm-down">
@@ -36,6 +20,7 @@ layout: default
             {% else %}
             <i class="fa fa-user-circle-o fa-4x image-fluid hidden-sm-down" aria-hidden="true"></i>
             {% endif %}
+
           <div class="col pr-0">
             <p class="m-0">
               <small>{{ site.author.name }}</small>
@@ -48,14 +33,40 @@ layout: default
               </small>
             </p>
           </div>
+
           <a type="button" class="btn btn-outline-dark" href="#">
             <i class="fa fa-github" aria-hidden="true"></i>
             Follow
           </a>
+
         </div>
       </div>
-      <h1 class="my-4">{{ page.title }}</h1>
-      <div class="jumbotron" style="background: url({{ page.image | default: site.teaser | relative_url }}) no-repeat center center;"></div>
+
+    </div>
+  </div>
+</div>
+
+<!-- post title -->
+<div class="jumbotron jumbotron-fluid" style="background: url({{ page.image | default: site.teaser | relative_url }}) no-repeat center center;">
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-12 col-lg-8 text-justify">
+        <h1 class="display-4" style="color: white; text-shadow: black 2px 2px;">{{ page.title }}</h1>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- post content -->
+<div class="container">
+  <div class="row">
+    <aside class="d-none d-lg-block col-lg-2 sticky-sidebar-left">
+      <div class="text-center" id="sticky-sidebar-share">
+        <small>Share</small>
+        {% include share.html %}
+      </div>
+    </aside>
+    <main class="col-12 col-lg-8 py-md-3 text-justify">
       <div id="post-content">
         {{ content }}
       </div>
@@ -66,41 +77,33 @@ layout: default
       </p>
       <hr>
     </main>
-
   </div>
-</section>
+</div>
 
-<section class="container">
+<!-- author summary-->
+<div class="container">
   <div class="row justify-content-center">
-    <div class="col-11 col-lg-7">
-    {% include author.html %}
-    </div>
-    <div class="col-11 col-lg-7 mt-3 p-0">
-      <a type="button" class="btn btn-outline-dark" href="#">
-        <i class="fa fa-github" aria-hidden="true"></i>
-        Follow
-      </a>
-      <a type="button" class="btn btn-outline-primary" href="#">
-        <i class="fa fa-linkedin" aria-hidden="true"></i>
-      </a>
-      <a type="button" class="btn btn-outline-danger" href="#">
-        <i class="fa fa-google-plus" aria-hidden="true"></i>
-      </a>
+    <div class="col-12 col-lg-8 text-justify">
+      {% include author.html %}
     </div>
   </div>
-</section>
+</div>
 
-<section class="container">
-  <div class="row">
+<!-- recent posts -->
+<div class="container">
+  <div class="row justify-content-center">
     <div class="col-12">
       {% include recent.html %}
     </div>
   </div>
+</div>
 
+<!-- comments and footer -->
+<div class="container">
   <div class="row justify-content-center">
     <div class="col-12 col-lg-8">
       {% include comments.html %}
       {% include mini-footer.html %}
     </div>
   </div>
-</section>
+</div>

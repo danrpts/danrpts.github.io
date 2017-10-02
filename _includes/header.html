@@ -1,10 +1,12 @@
-<header class="container-fluid" style="border-bottom: 1px solid rgba(0,0,0,.15);">
+<!-- /_includes/header.html -->
+
+<header class="container">
   <div class="row justify-content-center">
-    <div class="col-6 col-sm-5 col-md-4 col-lg-3 col-xl-3">
-      <h1 class="text-hide">
-        <img src="{{ "/assets/images/logo-text-techno.svg" | relative_url }}" class="img-fluid" alt="..." style="width: 100% \9;">
-        {{ site.title }}
-      </h1>
+    <h1><span class="display-4">super</span> <i class="fa fa-bolt" aria-hidden="true"></i> DAN</h1>
+  </div>
+  <div class="row justify-content-center">
+    <div class="col-12 col-lg-8 text-justify">
+      {% include navbar.html %}
     </div>
   </div>
 </header>

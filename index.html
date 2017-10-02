@@ -4,18 +4,7 @@ layout: default
 
 <!-- /index.html -->
 
-<header class="container-fluid">
-  <div class="row justify-content-center">
-    <div class="col-6 col-sm-5 col-md-4 col-lg-3 col-xl-3">
-      <h1 class="text-hide">
-        <a href="{{ "/" | absolute_url }}">
-          <img src="{{ "/assets/images/logo-text-techno.svg" | relative_url }}" class="img-fluid" alt="..." style="width: 100% \9;">
-        </a>
-        {{ site.title }}
-      </h1>
-    </div>
-  </div>
-</header>
+{% include header.html %}
 
 <div class="container mt-4">
   <div class="row justify-content-center">
@@ -33,7 +22,7 @@ layout: default
         <div class="card-footer">
           <small class="text-muted">
             {{ post.date | date: "%b %-d" }}
-            {%if post.read_time %} &middot; {% include read-time.html html=content %} {% endif %}
+            {%if post.read_time %} &middot; {% include read-time.html html=post.content %} {% endif %}
             {% if site.disqus_shortname and post.comments %}
             &middot; <a href="{{ post.url | absolute_url }}#disqus_thread">0 Comments</a>
             {% endif %}
@@ -46,6 +35,11 @@ layout: default
 </div>
 
 {% include paginate.html %}
+
+
+<div class="jumbotron jumbotron-fluid" style="height: 400px; background: url({{ site.teaser | relative_url }}) no-repeat center center;">
+
+</div>
 
 {% include subscribe.html %}
 
