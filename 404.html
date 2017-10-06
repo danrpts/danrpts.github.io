@@ -4,7 +4,7 @@ permalink: /404.html
 sitemap: false
 ---
 
-{% include navbar.html %}
+{% include header.html %}
 
 <div class="jumbotron jumbotron-fluid jumbotron-bg my-0"
      style="background: url({{ page.image | default: "/assets/images/blurs/green.jpg" | relative_url }}) no-repeat center center;">
@@ -17,4 +17,10 @@ sitemap: false
 
 {% include subscribe.html %}
 
-{% include footer.html %}
+<div class="container">
+  <div class="row justify-content-center">
+    <section class="col-12 col-lg-8">
+      {% include mini-footer.html %}
+    </section>
+  </div>
+</div>
