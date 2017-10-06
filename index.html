@@ -1,44 +1,51 @@
 ---
 layout: default
 ---
+<!-- ./index.html -->
 
-<!-- /index.html -->
-
-{% include header.html %}
-
-<div class="container mt-4">
-  <div class="row justify-content-center">
-    <main class="card-columns py-md-3">
-      {% for post in paginator.posts %}
-      <div class="card d-inline-block mx-1">
-        <a class="card-link" href="{{ post.url | relative_url}}"></a>
-        {% if post.image %}
-        <img class="card-img-top" src="{{ post.image | relative_url }}" aria-hidden="true">
-        {% endif %}
-        <div class="card-body">
-          <h4 class="card-title">{{ post.title }}</h4>
-          <p class="card-text">{{ post.excerpt | strip_html | normalize_whitespace | truncate: 60 | escape }}</p>
-        </div>
-        <div class="card-footer">
-          <small class="text-muted">
-            {{ post.date | date: "%b %-d" }}
-            {%if post.read_time %} &middot; {% include read-time.html html=post.content %} {% endif %}
-            {% if site.disqus_shortname and post.comments %}
-            &middot; <a href="{{ post.url | absolute_url }}#disqus_thread">0 Comments</a>
-            {% endif %}
-          </small>
-        </div>
-      </div>
-      {% endfor %}
-    </main>
+<div style="border-bottom: 1px solid rgba(0,0,0,0.15);">
+  <div class="container">
+      {% include header.html %}
   </div>
 </div>
 
-{% include paginate.html %}
+<!-- post title -->
+<div class="container-fluid p-0 m-0" id="starfield-wrapper">
+  <div id="starfield-header">
+    super <i class="fa fa-bolt" aria-hidden="true"></i> dan
+  </div>
+  <canvas id="starfield-canvas"></canvas>
+</div>
 
-
-<div class="jumbotron jumbotron-fluid" style="height: 400px; background: url({{ site.teaser | relative_url }}) no-repeat center center;">
-
+<div class="container">
+  <div class="row m-4">
+    <main class="col-sm-12">
+      <div class="card-columns">
+        {% for post in paginator.posts %}
+        <div class="card d-inline-block">
+          <a class="card-link" href="{{ post.url | relative_url}}"></a>
+          {% if post.image %}
+          <img class="card-img-top" src="{{ post.image | relative_url }}" aria-hidden="true">
+          {% endif %}
+          <div class="card-body">
+            <h4 class="card-title">{{ post.title }}</h4>
+            <p class="card-text">{{ post.excerpt | strip_html | normalize_whitespace | truncate: 60 | escape }}</p>
+          </div>
+          <div class="card-footer">
+            <small class="text-muted">
+              {{ post.date | date: "%b %-d" }}
+              {%if post.read_time %} &middot; {% include read-time.html html=post.content %} {% endif %}
+              {% if site.disqus_shortname and post.comments %}
+              &middot; <a href="{{ post.url | absolute_url }}#disqus_thread">0 Comments</a>
+              {% endif %}
+            </small>
+          </div>
+        </div>
+        {% endfor %}
+      </div>
+      {% include paginate.html %}
+    </main>
+  </div>
 </div>
 
 {% include subscribe.html %}
