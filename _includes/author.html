@@ -1,5 +1,19 @@
 <div class="container">
   <div class="row align-items-center justify-content-center">
+    <p>
+      <a class="btn btn-outline-dark" href="#" role="button">
+        <i class="fa fa-github" aria-hidden="true"></i>
+        Follow
+      </a>
+      <a class="btn btn-outline-primary" href="#" role="button">
+        <i class="fa fa-linkedin" aria-hidden="true"></i>
+      </a>
+      <a class="btn btn-outline-danger" href="#" role="button">
+        <i class="fa fa-google-plus" aria-hidden="true"></i>
+      </a>
+    </p>
+  </div>
+  <div class="row align-items-center justify-content-center">
       {% if site.author.picture %}
       <a href="{{ "/about" | relative_url }}">
         <img width="64" height="64" src="{{ site.author.picture }}" alt="{{ site.author.name }}" class="rounded-circle img-fluid hidden-sm-down">
@@ -14,17 +28,6 @@
         </small>
       </p>
     </div>
-    <p>
-      <a type="button" class="btn btn-outline-dark" href="#">
-        <i class="fa fa-github" aria-hidden="true"></i>
-        Follow
-      </a>
-      <a type="button" class="btn btn-outline-primary" href="#">
-        <i class="fa fa-linkedin" aria-hidden="true"></i>
-      </a>
-      <a type="button" class="btn btn-outline-danger" href="#">
-        <i class="fa fa-google-plus" aria-hidden="true"></i>
-      </a>
-    </p>
   </div>
+  <hr>
 </div>
