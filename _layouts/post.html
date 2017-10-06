@@ -3,14 +3,41 @@ layout: default
 ---
 <!-- /_layouts/post.html -->
 
-{% include header.html %}
+<div style="border-bottom: 1px solid rgba(0,0,0,0.15);">
+  <div class="container">
+      {% include header.html %}
+  </div>
+</div>
 
-<!-- post introduction -->
-<div class="container my-4">
-  <div class="row justify-content-center">
-    <div class="col-12 col-lg-8 text-justify">
+<!-- post title -->
+<div style="border-bottom: 1px solid rgba(0,0,0,.15);">
+  <div class="jumbotron jumbotron-fluid mb-0" style="
+  height: 200px;
+  background: url({{ page.image | default: site.teaser | relative_url }}) no-repeat center center;">
+    <div class="container">
+      <div class="row justify-content-center">
+        <div class="col-12 col-lg-8 text-justify">
+          <h1 class="display-4" style="color: white; text-shadow: black 2px 2px;">{{ page.title }}</h1>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
 
-      <div class="container">
+<div class="arrow_box"></div>
+
+<!-- post content -->
+<div class="container">
+  <div class="row">
+    <aside class="d-none d-lg-block col-lg-2 sticky-sidebar-left">
+      <div class="text-center" id="sticky-sidebar-share">
+        <small>Share</small>
+        {% include share.html %}
+      </div>
+    </aside>
+    <main class="col-12 col-lg-8 py-md-3 text-justify">
+
+      <div class="container my-3">
         <div class="row align-items-center justify-content-center">
 
             {% if site.author.picture %}
@@ -34,7 +61,7 @@ layout: default
             </p>
           </div>
 
-          <a type="button" class="btn btn-outline-dark" href="#">
+          <a class="btn btn-outline-dark" href="#" role="button">
             <i class="fa fa-github" aria-hidden="true"></i>
             Follow
           </a>
@@ -42,39 +69,16 @@ layout: default
         </div>
       </div>
 
-    </div>
-  </div>
-</div>
-
-<!-- post title -->
-<div class="jumbotron jumbotron-fluid" style="background: url({{ page.image | default: site.teaser | relative_url }}) no-repeat center center;">
-  <div class="container">
-    <div class="row justify-content-center">
-      <div class="col-12 col-lg-8 text-justify">
-        <h1 class="display-4" style="color: white; text-shadow: black 2px 2px;">{{ page.title }}</h1>
-      </div>
-    </div>
-  </div>
-</div>
-
-<!-- post content -->
-<div class="container">
-  <div class="row">
-    <aside class="d-none d-lg-block col-lg-2 sticky-sidebar-left">
-      <div class="text-center" id="sticky-sidebar-share">
-        <small>Share</small>
-        {% include share.html %}
-      </div>
-    </aside>
-    <main class="col-12 col-lg-8 py-md-3 text-justify">
       <div id="post-content">
         {{ content }}
       </div>
+
       <p>
         {% for tag in page.tags %}
           <a class="btn btn-light" href="{{ "/browse/" | append: tag | absolute_url }}">{{ tag }}</a>
         {% endfor %}
       </p>
+
       <hr>
     </main>
   </div>
