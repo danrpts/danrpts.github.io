@@ -1,15 +1,45 @@
 ---
 layout: default
 permalink: /search
+sitemap: false
 ---
 
 <div style="border-bottom: 1px solid rgba(0,0,0,0.15);">
     {% include header.html %}
 </div>
 
-<gcse:searchresults-only></gcse:searchresults-only>
+<script>
+  $(document).ready(function () {
+    function getParam(name) {
+      var searchParams = new URLSearchParams(location.search);
+      return searchParams.has(name) && searchParams.get(name);
+    }
+  });
+</script>
 
-{% include subscribe.html %}
+<div class="container">
+  <div class="row justify-content-center">
+    <main class="col-md-8">
+      <div class="list-group my-4">
+        {% for category in site.categories %}
+          {% assign nposts = category | last | size %}
+          <div class="my-4" data-name="{{ category | first | escape }}">
+            <p class="display-4">{{ category | first }} ({{ nposts }})</p>
+              {% for posts in category %}
+                {% for post in posts %}
+                  {% if post.title %}
+                    <a href="{{ post.url }}" class="list-group-item">
+                      {{ post.title }}
+                    </a>
+                  {% endif %}
+                {% endfor %}
+              {% endfor %}
+          </div>
+        {% endfor %}
+      </div>
+    </main>
+  </div>
+</div>
 
 <div class="container">
   <div class="row justify-content-center">
