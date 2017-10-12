@@ -8,33 +8,25 @@ sitemap: false
     {% include header.html %}
 </div>
 
-<script>
-  $(document).ready(function () {
-    function getParam(name) {
-      var searchParams = new URLSearchParams(location.search);
-      return searchParams.has(name) && searchParams.get(name);
-    }
-  });
-</script>
-
 <div class="container">
   <div class="row justify-content-center">
     <main class="col-md-8">
       <div class="list-group my-4">
         {% for category in site.categories %}
           {% assign nposts = category | last | size %}
-          <div class="my-4" data-name="{{ category | first | escape }}">
-            <p class="display-4">{{ category | first }} ({{ nposts }})</p>
-              {% for posts in category %}
-                {% for post in posts %}
-                  {% if post.title %}
-                    <a href="{{ post.url }}" class="list-group-item">
-                      {{ post.title }}
-                    </a>
-                  {% endif %}
+          {% assign cat = category | first | escape %}
+            <div class="my-4 d-none" data-name="{{ cat }}">
+              <p class="display-4">{{ category | first }} ({{ nposts }})</p>
+                {% for posts in category %}
+                  {% for post in posts %}
+                    {% if post.title %}
+                      <a href="{{ post.url }}" class="list-group-item">
+                        {{ post.title }}
+                      </a>
+                    {% endif %}
+                  {% endfor %}
                 {% endfor %}
-              {% endfor %}
-          </div>
+            </div>
         {% endfor %}
       </div>
     </main>
