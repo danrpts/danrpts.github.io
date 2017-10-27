@@ -1,0 +1,77 @@
+---
+layout: default
+---
+
+<!-- _layouts/home.html -->
+
+<div>
+
+  {{ content }}
+
+  <div class="jumbotron jumbotron-fluid border border-top-0 border-left-0 border-right-0">
+    <div class="container">
+      <h1 class="display-2 text-center">{{ site.title }}</h1>
+      <p class="lead text-center">{{ site.description }}</p>
+    </div>
+  </div>
+
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-lg-9">
+        <div class="card-columns">
+          {% assign date_format = site.overrides.date_format | default: "%b %-d" %}
+          {% for post in site.posts %}
+          <div class="card d-inline-block">
+            <a class="card-link" href="{{ post.url | relative_url}}"></a>
+            {% if post.image %}
+            <img class="card-img-top" src="{{ post.image | relative_url }}" aria-hidden="true">
+            {% endif %}
+            <div class="card-body">
+              <h4 class="card-title">{{ post.title | escape }}</h4>
+              <p class="card-text">{{ post.excerpt | strip_html | normalize_whitespace | truncate: 60 | escape }}</p>
+            </div>
+            <div class="card-footer">
+              <small class="text-muted">
+                {{ post.date | date: date_format }}
+                {% if site.disqus_shortname and post.comments %}
+                &middot; <a href="{{ post.url | relative_url }}#disqus_thread">0 Comments</a>
+                {% endif %}
+              </small>
+            </div>
+          </div>
+          {% endfor %}
+        </div>
+        {% include paginator.html %}
+      </div>
+    </div>
+  </div>
+
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-lg-8">
+        <hr />
+        <p class="display-4 text-center">Hey! Stay tuned</p>
+        <form action="{{ site.mailchimp.action | url_escape }}" method="post" name="mc-embedded-subscribe-form" target="_blank" novalidate>
+          <div class="form-group">
+            <div class="input-group input-group-lg">
+
+              <input type="email" value="" name="EMAIL" class="lead form-control" placeholder="Enter your email address ..." required>
+
+              <!-- real people should not fill this in and expect good things - do not remove this or risk form bot signups-->
+              <div style="position: absolute; left: -5000px;" aria-hidden="true">
+                <input type="text" name="{{ site.mailchimp.nobot }}" tabindex="-1" value="">
+              </div>
+
+              <span class="input-group-btn">
+                <input class="btn btn-outline-success" type="submit" value="Subscribe" name="subscribe">
+              </span>
+
+            </div>
+            <small class="form-text text-muted text-left">I'll never share your email with anyone else.</small>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+</div>

@@ -1,0 +1,36 @@
+title: cereal
+author: mr. crunch
+email: crunch@email.com
+description: A Jekyll theme inspired by Medium and made for GitHub Pages.
+
+social:
+  links:
+    - https://github.com/danrpts
+
+feed: atom.xml
+
+# Disqus stuff
+#disqus_shortname:
+
+# Google stuff
+#google_analytics:
+
+overrides:
+  date_format: "%b %-d, %Y"
+
+# Gems
+plugins:
+  - jekyll-paginate
+  - jekyll-sitemap
+  - jekyll-seo-tag
+  - jekyll-feed
+  - jemoji
+
+markdown: kramdown
+permalink: /:title/
+paginate: 2 # number of posts per page
+paginator_bound: 2 # max number of lower/upper pages in paginator
+
+exclude:
+  - Gemfile
+  - Gemfile.lock

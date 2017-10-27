@@ -1,0 +1,49 @@
+
+<!-- _includes/footer.html -->
+
+<footer class="container mb-3">
+  <div class="row justify-content-center">
+    <div class="col-lg-8">
+      <hr />
+      <nav class="navbar navbar-light bg-light bg-white px-0">
+
+        <span class="navbar-text mr-auto">
+          <small><i class="fa fa-copyright" aria-hidden="true"></i> 2017 <a href="https://github.com/danrpts/cereal" target="_blank">Cereal</a>.</small>
+        </span>
+
+        <span>
+          <a class="btn" href="{{ site.social.links[0] }}" role="button">
+            <i class="fa fa-github" aria-hidden="true"></i>
+          </a>
+          <a class="btn" href="{{ site.social.links[1] }}" role="button">
+            <i class="fa fa-twitter" aria-hidden="true"></i>
+          </a>
+          <a class="btn" href="{{ site.social.links[2] }}" role="button">
+            <i class="fa fa-linkedin" aria-hidden="true"></i>
+          </a>
+          <a class="btn" href="{{ site.social.links[3] }}" role="button">
+            <i class="fa fa-google-plus" aria-hidden="true"></i>
+          </a>
+        </span>
+
+        <span class="ml-auto">
+
+          <small><a href="{{ page_url | append: "#top" | relative_url }}">&uarr;</a></small>
+          <small><a href="{{ "/" | relative_url }}">Home</a></small>
+
+          {% assign paths = site.pages | map: "path" %}
+
+          {% for path in paths %}
+            {% assign page = site.pages | where: "path", path | first %}
+            {% if page.title %}
+            <small>
+              <a href="{{ page.url | relative_url }}">{{ page.title | escape }}</a>
+            </small>
+            {%endif%}
+          {% endfor %}
+        </span>
+
+      </nav>
+    </div>
+  </div>
+</footer>

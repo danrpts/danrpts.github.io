@@ -1,0 +1,65 @@
+---
+layout: default
+---
+
+<!-- _layouts/post.html -->
+
+<article itemscope itemtype="http://schema.org/BlogPosting">
+
+  <header class="jumbotron jumbotron-fluid mb-0">
+    <div class="container">
+      <div class="row justify-content-center">
+        <div class="col-lg-8">
+          <h1 class="display-4" itemprop="name headline">{{ page.title | escape }}</h1>
+          <p>
+            <time datetime="{{ page.date | date_to_xmlschema }}" itemprop="datePublished">
+              {% assign date_format = site.overrides.date_format | default: "%b %-d" %}
+              {{ page.date | date: date_format }}
+            </time>
+            {% if page.author %}
+              • <span itemprop="author" itemscope itemtype="http://schema.org/Person"><span itemprop="name">{{ page.author }}</span></span>
+            {% endif %}
+          </p>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <div class="arrow-box mb-4"></div>
+
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-lg-8">
+        <div itemprop="articleBody">
+        {{ content }}
+        </span>
+        <p>
+          {% for tag in page.tags %}
+            <a class="btn btn-light" href="{{ "/browse/" | append: tag | absolute_url }}">{{ tag }}</a>
+          {% endfor %}
+        </p>
+        <hr />
+      </div>
+    </div>
+  </div>
+
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-lg-9">
+        {% include recent.html %}
+      </div>
+    </div>
+  </div>
+
+
+  {% if site.disqus.shortname %}
+    <div class="container">
+      <div class="row justify-content-center">
+        <div class="col-lg-8">
+          <hr />
+          {% include disqus_comments.html %}
+        </div>
+      </div>
+    </div>
+  {% endif %}
+</article>

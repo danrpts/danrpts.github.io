@@ -1,0 +1,17 @@
+
+<!-- /_includes/recent.html -->
+
+<div>
+  <p><small>Recent</small></p>
+  <div class="card-deck">
+    {% for post in site.related_posts limit: 3 %}
+      <div class="card">
+        <img class="card-img-top" src="{{ post.image | default: site.teaser | relative_url }}" style="height:100px;" aria-hidden="true">
+        <a class="card-link" href="{{ post.url | relative_url }}"></a>
+        <div class="card-body">
+          <p class="card-title lead">{{ post.title | escape | truncate: 48 }}</p>
+        </div>
+      </div>
+    {% endfor %}
+  </div>
+</div>
