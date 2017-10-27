@@ -1,10 +1,10 @@
 ---
 layout: post
 title: Nulla eu massa
-date: 2016-11-12 00:00:00
-last_modified_at: 2016-11-12 00:00:00
-categories: lorem ipsum
-tags: Nulla
+date:
+last_modified_at:
+categories: "lorem ipsum"
+tags:
 image:
 ---
 
