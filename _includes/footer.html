@@ -12,16 +12,19 @@
         </span>
 
         <span>
-          <a class="btn" href="{{ site.social.links[0] }}" role="button">
+          <a class="btn" href="{{ site.social.links[0] | default: "#" }}" role="button">
             <i class="fa fa-github" aria-hidden="true"></i>
           </a>
-          <a class="btn" href="{{ site.social.links[1] }}" role="button">
+          <a class="btn" href="{{ site.social.links[1] | default: "#" }}" role="button">
             <i class="fa fa-twitter" aria-hidden="true"></i>
           </a>
-          <a class="btn" href="{{ site.social.links[2] }}" role="button">
+          <a class="btn" href="{{ site.social.links[2] | default: "#" }}" role="button">
+            <i class="fa fa-facebook" aria-hidden="true"></i>
+          </a>
+          <a class="btn" href="{{ site.social.links[3] | default: "#" }}" role="button">
             <i class="fa fa-linkedin" aria-hidden="true"></i>
           </a>
-          <a class="btn" href="{{ site.social.links[3] }}" role="button">
+          <a class="btn" href="{{ site.social.links[4] | default: "#" }}" role="button">
             <i class="fa fa-google-plus" aria-hidden="true"></i>
           </a>
         </span>
@@ -36,9 +39,7 @@
           {% for path in paths %}
             {% assign page = site.pages | where: "path", path | first %}
             {% if page.title %}
-            <small>
-              <a href="{{ page.url | relative_url }}">{{ page.title | escape }}</a>
-            </small>
+            <small><a href="{{ page.url | relative_url }}">{{ page.title | escape }}</a></small>
             {%endif%}
           {% endfor %}
         </span>
