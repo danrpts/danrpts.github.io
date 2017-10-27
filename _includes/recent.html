@@ -1,5 +1,5 @@
 
-<!-- /_includes/recent.html -->
+<!-- _includes/recent.html -->
 
 <div>
   <p><small>Recent</small></p>
@@ -9,7 +9,8 @@
         <img class="card-img-top" src="{{ post.image | default: site.teaser | relative_url }}" style="height:100px;" aria-hidden="true">
         <a class="card-link" href="{{ post.url | relative_url }}"></a>
         <div class="card-body">
-          <p class="card-title lead">{{ post.title | escape | truncate: 48 }}</p>
+          {% assign post_title_length = site.overrides.post_title_length | default: 20 %}
+          <p class="card-title lead">{{ post.title | escape | truncate: post_title_length }}</p>
         </div>
       </div>
     {% endfor %}
