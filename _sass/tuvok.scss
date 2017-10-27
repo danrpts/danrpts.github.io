@@ -1,3 +1,15 @@
+.jumbotron-image {
+  background-image: url("images/galaxy.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center center;
+}
+
+.jumbotron-image > header {
+  color: white;
+  text-shadow: 2px 2px 2px black;
+}
+
 .arrow-box {
   position: relative;
   background: #ffffff;
