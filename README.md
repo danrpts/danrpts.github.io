@@ -5,7 +5,13 @@ The logical Jekyll theme for an elegant GitHub Pages blog.
 
 ## Installation
 
+  git clone https://github.com/danrpts/tuvok.git
+  cd tuvok
+  bundle install
+
 ## Usage
+
+  bundle exec jekyll serve
 
 ## Configuration
 
