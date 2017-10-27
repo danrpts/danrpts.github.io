@@ -4,12 +4,4 @@ title: About
 permalink: /about/
 ---
 
-This is the base Jekyll theme. You can find out more info about customizing your Jekyll theme, as well as basic Jekyll usage documentation at [jekyllrb.com](http://jekyllrb.com/)
-
-You can find the source code for the Jekyll new theme at:
-
-[minima](https://github.com/jekyll/minima)
-
-You can find the source code for Jekyll at
-
-[jekyll](https://github.com/jekyll/jekyll)
+Tuvok is a responsive card-column theme for Jekyll built on Bootstrap 4. It is the logical choice for an elegant blog, portfolio, or personal site hosted on GitHub Pages. You can find the source code on [Github](https://github.com/danrpts/tuvok).

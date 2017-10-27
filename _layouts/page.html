@@ -10,6 +10,13 @@ layout: default
     <div class="container">
       <div class="row justify-content-center">
         <div class="col-lg-8">
+          {% if site.avatar %}
+          {% unless page.noavatar %}
+            <p class="text-center mt-4">
+              <img src="{{ site.avatar | escape_url }}" alt="author avatar" class="rounded-circle img-fluid img-thumbnail">
+            </p>
+            {% endunless %}
+          {% endif %}
           <h1 class="display-2 text-center">{{ page.title | escape }}</h1>
         </div>
       </div>
@@ -19,7 +26,7 @@ layout: default
   <div class="container">
     <div class="row justify-content-center">
       <div class="col-lg-8">
-        {{ content }}
+        <p class="text-justify">{{ content }}</p>
       </div>
     </div>
   </div>
