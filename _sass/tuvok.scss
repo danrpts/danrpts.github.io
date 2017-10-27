@@ -70,3 +70,24 @@
   -ms-filter: grayscale(0%);
   -o-filter: grayscale(0%);
 }
+
+.sticky-sidebar {
+  @supports (position: sticky) {
+    position: sticky;
+    top: 0rem;
+    max-height: 100vh;
+    overflow-y: auto;
+  }
+  padding-top: 1.5rem;
+  padding-bottom: 1.5rem;
+}
+
+.sticky-sidebar-left {
+  order: 0;
+  @extend .sticky-sidebar;
+}
+
+.sticky-sidebar-right {
+  order: 2;
+  @extend .sticky-sidebar;
+}
