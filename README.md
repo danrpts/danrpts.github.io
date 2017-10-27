@@ -1,7 +1,7 @@
 ## Tuvok
 The logical Jekyll theme for an elegant GitHub Pages blog.
 
-![home-screenshot](screenshots/home.png)
+![tuvok-home-screenshot](assets/images/tuvok-home-screenshot.png)
 
 ## Installation
 
