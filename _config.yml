@@ -3,13 +3,17 @@
 lang: en
 encoding: utf-8
 title: Tuvok
-author: Daniel Peterson
-email: its@superdan.io
+author: Commander Tuvok
+email:
 avatar: https://stt.wiki/w/images/4/4a/Maquis_Tuvok_Head.png
 description: The logical Jekyll theme for an elegant GitHub Pages blog.
 social:
   links:
-    - https://github.com/danrpts
+    - # githuh
+    - # twitter
+    - # facebook
+    - # linkedin
+    - # google plus
 
 # Jekyll config
 markdown: kramdown
@@ -18,7 +22,7 @@ excerpt_seperator: "<!--more-->"
 paginate: 6 # number of posts per page
 
 # Disqus config
-disqus_shortname:
+disqus_shortname: true
 
 # Google config
 google_analytics:
@@ -49,8 +53,8 @@ defaults:
       path: "_posts"
       type: posts
     values:
-      layout: default
-      comments: true
+      layout: page
+      disqus_comments: true
       read_time: true
 
 exclude:
