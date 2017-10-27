@@ -23,12 +23,14 @@
       </li>
     {% endif %}
 
-    {% assign lower = paginator.page | minus: site.paginator_bound %}
+    {% assign paginate_bound = site.overrides.paginator_pages | default: 2 %}
+
+    {% assign lower = paginator.page | minus: paginate_bound %}
     {% if lower < 1 %}
     {% assign lower = 1 %}
     {% endif %}
 
-    {% assign upper = paginator.page | plus: site.paginator_bound %}
+    {% assign upper = paginator.page | plus: paginate_bound %}
     {% if upper > paginator.total_pages %}
     {% assign upper = paginator.total_pages %}
     {% endif %}
