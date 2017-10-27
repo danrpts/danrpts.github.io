@@ -33,8 +33,10 @@ layout: default
             <div class="card-footer">
               <small class="text-muted">
                 {{ post.date | date: date_format }}
+                {% assign post_content = post.content | escape %}
+                {% if post.read_time %} &middot; {% include read_time.html html=post_content %} {% endif %}
                 {% if site.disqus_shortname and post.comments %}
-                &middot; <a href="{{ post.url | relative_url }}#disqus_thread">0 Comments</a>
+                &middot; <a href="{{ post.url | absolute_url }}#disqus_thread">0 Comments</a>
                 {% endif %}
               </small>
             </div>
@@ -46,32 +48,34 @@ layout: default
     </div>
   </div>
 
-  <div class="container">
-    <div class="row justify-content-center">
-      <div class="col-lg-8">
-        <hr />
-        <p class="display-4 text-center">Hey! Stay tuned</p>
-        <form action="{{ site.mailchimp.action | url_escape }}" method="post" name="mc-embedded-subscribe-form" target="_blank" novalidate>
-          <div class="form-group">
-            <div class="input-group input-group-lg">
+  {% if site.mailchimp.action and site.mailchimp.nobot %}
+    <div class="container">
+      <div class="row justify-content-center">
+        <div class="col-lg-8">
+          <hr />
+          <p class="display-4 text-center">Hey! Stay tuned</p>
+          <form action="{{ site.mailchimp.action | url_escape }}" method="post" name="mc-embedded-subscribe-form" target="_blank" novalidate>
+            <div class="form-group">
+              <div class="input-group input-group-lg">
 
-              <input type="email" value="" name="EMAIL" class="lead form-control" placeholder="Enter your email address ..." required>
+                <input type="email" value="" name="EMAIL" class="lead form-control" placeholder="Enter your email address ..." required>
 
-              <!-- real people should not fill this in and expect good things - do not remove this or risk form bot signups-->
-              <div style="position: absolute; left: -5000px;" aria-hidden="true">
-                <input type="text" name="{{ site.mailchimp.nobot }}" tabindex="-1" value="">
+                <!-- real people should not fill this in and expect good things - do not remove this or risk form bot signups-->
+                <div style="position: absolute; left: -5000px;" aria-hidden="true">
+                  <input type="text" name="{{ site.mailchimp.nobot }}" tabindex="-1" value="">
+                </div>
+
+                <span class="input-group-btn">
+                  <input class="btn btn-outline-success" type="submit" value="Subscribe" name="subscribe">
+                </span>
+
               </div>
-
-              <span class="input-group-btn">
-                <input class="btn btn-outline-success" type="submit" value="Subscribe" name="subscribe">
-              </span>
-
+              <small class="form-text text-muted text-left">I'll never share your email with anyone else.</small>
             </div>
-            <small class="form-text text-muted text-left">I'll never share your email with anyone else.</small>
-          </div>
-        </form>
+          </form>
+        </div>
       </div>
     </div>
-  </div>
+  {% endif %}
 
 </div>
