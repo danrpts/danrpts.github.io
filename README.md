@@ -1,7 +1,7 @@
-## cereal
-A Jekyll theme inspired by Medium and built for GitHub Pages.
+## Tuvok
+The logical Jekyll theme for an elegant GitHub Pages blog.
 
-![cereal posts screenshot](screenshots/cereal-posts.png)
+![home-screenshot](screenshots/home.png)
 
 ## Installation
 
