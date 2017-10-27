@@ -56,8 +56,8 @@ defaults:
       path: "_posts"
       type: posts
     values:
-      layout: default
-      comments: true
+      layout: page
+      disqus_comments: true
       read_time: true
 
 exclude:
