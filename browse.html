@@ -1,0 +1,28 @@
+---
+layout: page
+permalink: /browse
+sitemap: false
+---
+
+<!-- browse.html -->
+
+<div class="list-group my-4">
+  {% for category in site.categories %}
+    {% assign nposts = category | last | size %}
+    {% assign cat = category | first | escape %}
+    {% assign post_title_length = site.overrides.post_title_length | default: 20 %}
+
+      <div class="my-4 d-none" data-name="{{ cat }}">
+        <p class="display-4">{{ category | first }} ({{ nposts }})</p>
+          {% for posts in category %}
+            {% for post in posts %}
+              {% if post.title %}
+                <a href="{{ post.url | escape_url }}" class="list-group-item">
+                  {{ post.title | truncate: post_title_length  | escape }}
+                </a>
+              {% endif %}
+            {% endfor %}
+          {% endfor %}
+      </div>
+  {% endfor %}
+</div>
