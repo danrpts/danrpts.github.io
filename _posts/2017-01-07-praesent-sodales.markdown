@@ -3,7 +3,7 @@ layout: post
 title: Praesent sodales
 date:
 last_modified_at:
-categories: "lorem ipsum"
+categories: lorem
 tags:
 image:
 ---
