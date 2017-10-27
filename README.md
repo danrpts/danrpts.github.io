@@ -12,7 +12,7 @@ Clone
 Branch
     git remote add tuvok https://github.com/danrpts/tuvok.git
     git fetch
-    git checkout -b tuvok tuvok/master
+    git checkout -b tuvok --track tuvok/master
 
 ## Usage
 
