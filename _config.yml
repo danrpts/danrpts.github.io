@@ -5,17 +5,17 @@ encoding: utf-8
 title: superdan
 author: Daniel Peterson
 email: its@superdan.io
-avatar: https://stt.wiki/w/images/4/4a/Maquis_Tuvok_Head.png
+avatar: //avatars.githubusercontent.com/danrpts
 description: Daniel Peterson's Blog.
-url : https://superdan.io
+url : //superdan.io
 repository : danrpts/danrpts.github.io
 social:
   links:
-    - https://github.com/danrpts
+    - //github.com/danrpts
     # - https://twitter.com/<username>
     # - https://www.facebook.com/<username>
-    - https://www.linkedin.com/in/danrpts/
-    - https://plus.google.com/u/danrpts
+    - //www.linkedin.com/in/danrpts/
+    - //plus.google.com/u/danrpts
 
 # Jekyll config
 permalink: /:title/
