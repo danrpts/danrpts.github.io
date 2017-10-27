@@ -14,7 +14,7 @@ social:
 markdown: kramdown
 highlighter: rouge
 excerpt_seperator: "<!--more-->"
-paginate: 3 # number of posts per page
+paginate: 6 # number of posts per page
 
 # Disqus config
 disqus_shortname:
