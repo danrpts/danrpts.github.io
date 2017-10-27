@@ -1,30 +1,38 @@
-title: cereal
-author: mr. crunch
-email: crunch@email.com
-description: A Jekyll theme inspired by Medium and built for GitHub Pages.
+
+# Site config
+lang: en
+encoding: utf-8
+title: Tuvok
+author: Daniel Peterson
+email: its@superdan.io
+description: The logical Jekyll theme for an elegant GitHub Pages blog.
 social:
   links:
     - https://github.com/danrpts
 
-feed: atom.xml
-
-## Jekyll config
+# Jekyll config
 markdown: kramdown
-permalink: /:title/
-paginate: 2 # number of posts per page
+highlighter: rouge
+excerpt_seperator: "<!--more-->"
+paginate: 3 # number of posts per page
 
+# Disqus config
+disqus_shortname:
 
-# Disqus stuff
-#disqus_shortname:
+# Google config
+google_analytics:
 
-# Google stuff
-#google_analytics:
+# Mailchimp config
+mailchimp_action: true
+mailchimp_nobot: true
 
 # Override template defaults
 overrides:
   #date_format: "%b %-d, %Y"
+  post_title_length: 30
+  post_excerpt_length: 40
   words_per_minute: 200
-  paginator_pages: 2 # max number of lower/upper pages in paginator
+  paginator_pages: 2 # max number of upper/lower links in the panginator
 
 # Gems
 plugins:
