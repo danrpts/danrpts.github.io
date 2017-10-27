@@ -1,11 +1,11 @@
 ---
 layout: post
 title: Maecenas
-date: 2016-10-08 00:00:00
-last_modified_at: 2016-10-08 00:00:00
-categories: lorem ipsum
-tags: magna
-image: /assets/images/blurs/blue.jpg
+date:
+last_modified_at:
+categories: "lorem ipsum"
+tags:
+image:
 ---
 
 ## Curabitur mattis
