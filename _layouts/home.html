@@ -8,27 +8,53 @@ layout: default
 
   {{ content }}
 
-  <div class="jumbotron jumbotron-fluid border border-top-0 border-left-0 border-right-0">
-    <div class="container">
-      <h1 class="display-2 text-center">{{ site.title }}</h1>
+  <div class="jumbotron-image jumbotron jumbotron-fluid border border-top-0 border-left-0 border-right-0">
+    <header class="container">
+      <h1 class="display-1 text-center">{{ site.title }}</h1>
       <p class="lead text-center">{{ site.description }}</p>
-    </div>
+      <p class="text-center">
+        <a class="github-button" href="https://github.com/danrpts/tuvok/archive/master.zip" data-icon="octicon-cloud-download" data-size="large" aria-label="Download ntkme/github-buttons on GitHub">Download</a>
+        <a class="github-button" href="https://github.com/danrpts/tuvok/fork" data-icon="octicon-repo-forked" data-size="large" data-show-count="true" aria-label="Fork ntkme/github-buttons on GitHub">Fork</a>
+      </p>
+    </header>
   </div>
 
-  <div class="container">
+<div class="container">
+  <div class="row justify-content-center">
+    <div class="col-lg-9">
+      <div class="d-flex">
+        <span class="mr-auto">
+          {% include paginator.html %}
+        </span>
+
+        <span class="ml-auto">
+          <a class="btn" href="{{ "/feed.xml" | relative_url }}" role="button">
+            <i class="fa fa-feed" aria-hidden="true"></i>
+          </a>
+        </span>
+      </div>
+      <hr />
+    </div>
+  </div>
+</div>
+
+  <div class="container my-4">
     <div class="row justify-content-center">
       <div class="col-lg-9">
         <div class="card-columns">
           {% assign date_format = site.overrides.date_format | default: "%b %-d" %}
-          {% for post in site.posts %}
+          {% for post in paginator.posts %}
           <div class="card d-inline-block">
             <a class="card-link" href="{{ post.url | relative_url}}"></a>
             {% if post.image %}
             <img class="card-img-top" src="{{ post.image | relative_url }}" aria-hidden="true">
             {% endif %}
             <div class="card-body">
-              <h4 class="card-title">{{ post.title | escape }}</h4>
-              <p class="card-text">{{ post.excerpt | strip_html | normalize_whitespace | truncate: 60 | escape }}</p>
+              {% assign post_title_length = site.overrides.post_title_length | default: 20 %}
+              {% assign post_excerpt_length = site.overrides.post_excerpt_length | default: 30 %}
+
+              <p class="lead card-title">{{ post.title | truncate: post_title_length | escape }}</p>
+              <p class="card-text">{{ post.excerpt | strip_html | normalize_whitespace | truncate: post_excerpt_length | escape }}</p>
             </div>
             <div class="card-footer">
               <small class="text-muted">
@@ -43,39 +69,10 @@ layout: default
           </div>
           {% endfor %}
         </div>
-        {% include paginator.html %}
       </div>
     </div>
   </div>
 
-  {% if site.mailchimp.action and site.mailchimp.nobot %}
-    <div class="container">
-      <div class="row justify-content-center">
-        <div class="col-lg-8">
-          <hr />
-          <p class="display-4 text-center">Hey! Stay tuned</p>
-          <form action="{{ site.mailchimp.action | url_escape }}" method="post" name="mc-embedded-subscribe-form" target="_blank" novalidate>
-            <div class="form-group">
-              <div class="input-group input-group-lg">
-
-                <input type="email" value="" name="EMAIL" class="lead form-control" placeholder="Enter your email address ..." required>
-
-                <!-- real people should not fill this in and expect good things - do not remove this or risk form bot signups-->
-                <div style="position: absolute; left: -5000px;" aria-hidden="true">
-                  <input type="text" name="{{ site.mailchimp.nobot }}" tabindex="-1" value="">
-                </div>
-
-                <span class="input-group-btn">
-                  <input class="btn btn-outline-success" type="submit" value="Subscribe" name="subscribe">
-                </span>
-
-              </div>
-              <small class="form-text text-muted text-left">I'll never share your email with anyone else.</small>
-            </div>
-          </form>
-        </div>
-      </div>
-    </div>
-  {% endif %}
+  {% include mailchimp_subscribe.html %}
 
 </div>
