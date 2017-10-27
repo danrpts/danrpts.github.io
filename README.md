@@ -1,5 +1,5 @@
 ## cereal
-A Jekyll theme inspired by Medium and made for GitHub Pages.
+A Jekyll theme inspired by Medium and built for GitHub Pages.
 
 ![cereal posts screenshot](screenshots/cereal-posts.png)
 
