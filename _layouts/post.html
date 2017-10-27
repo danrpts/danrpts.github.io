@@ -16,8 +16,12 @@ layout: default
               {% assign date_format = site.overrides.date_format | default: "%b %-d, %Y" %}
               {{ page.date | date: date_format }}
             </time>
-            {% if page.author %}
-              • <span itemprop="author" itemscope itemtype="http://schema.org/Person"><span itemprop="name">{{ page.author }}</span></span>
+            {% if page.read_time %}
+              • {% include read_time.html html=page.content %}
+            {% endif %}
+            {% assign author = page.author | default: site.author %}
+            {% if author %}
+              • <span itemprop="author" itemscope itemtype="http://schema.org/Person"><span itemprop="name">{{ author }}</span></span>
             {% endif %}
           </p>
         </div>
@@ -90,7 +94,7 @@ layout: default
   </div>
 
 
-  {% if site.disqus.shortname %}
+  {% if site.disqus_shortname and page.disqus_comments and jekyll.environment == "production"%}
     <div class="container">
       <div class="row justify-content-center">
         <div class="col-lg-8">
@@ -99,5 +103,8 @@ layout: default
         </div>
       </div>
     </div>
+  {% else %}
+    <p class="text-center mt-4"><em>Comments disabled.</em></p>
   {% endif %}
+
 </article>
