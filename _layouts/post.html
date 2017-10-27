@@ -6,8 +6,8 @@ layout: default
 
 <article itemscope itemtype="http://schema.org/BlogPosting">
 
-  <header class="jumbotron jumbotron-fluid mb-0">
-    <div class="container">
+  <div class="jumbotron-image jumbotron jumbotron-fluid border border-top-0 border-left-0 border-right-0 mb-0">
+    <header class="container">
       <div class="row justify-content-center">
         <div class="col-lg-8">
           <h1 class="display-4" itemprop="name headline">{{ page.title | escape }}</h1>
@@ -22,8 +22,8 @@ layout: default
           </p>
         </div>
       </div>
-    </div>
-  </header>
+    </header>
+  </div>
 
   <div class="arrow-box mb-4"></div>
 
@@ -34,8 +34,8 @@ layout: default
         {{ content }}
         </span>
         <p>
-          {% for tag in page.tags %}
-            <a class="btn btn-light" href="{{ "/browse/" | append: tag | absolute_url }}">{{ tag }}</a>
+          {% for cat in page.categories %}
+            <a class="btn btn-light" href="{{ "/browse?q=" | append: cat | relative_url }}">{{ cat }}</a>
           {% endfor %}
         </p>
         <hr />
