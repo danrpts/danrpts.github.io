@@ -2,29 +2,36 @@
 # Site config
 lang: en
 encoding: utf-8
-title: Tuvok
+title: superdan
 author: Daniel Peterson
 email: its@superdan.io
-description: The logical Jekyll theme for an elegant GitHub Pages blog.
+description: Daniel Peterson's Blog.
+url : https://superdan.io
+repository : danrpts/danrpts.github.io
 social:
   links:
     - https://github.com/danrpts
+    # - https://twitter.com/<username>
+    # - https://www.facebook.com/<username>
+    - https://www.linkedin.com/in/danrpts/
+    - https://plus.google.com/u/danrpts
 
 # Jekyll config
+permalink: /:title/
 markdown: kramdown
 highlighter: rouge
 excerpt_seperator: "<!--more-->"
 paginate: 6 # number of posts per page
 
 # Disqus config
-disqus_shortname:
+disqus_shortname: https-danrpts-github-io
 
 # Google config
-google_analytics:
+google_analytics: UA-104085609-1
 
 # Mailchimp config
-mailchimp_action: true
-mailchimp_nobot: true
+mailchimp_action: //github.us16.list-manage.com/subscribe/post?u=e40514466fe2ed7eb4018735e&id=93118f9da3
+mailchimp_nobot: b_e40514466fe2ed7eb4018735e_93118f9da3
 
 # Override template defaults
 overrides:
