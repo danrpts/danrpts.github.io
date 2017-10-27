@@ -3,7 +3,7 @@ layout: post
 title: Nulla eu massa
 date:
 last_modified_at:
-categories: "lorem ipsum"
+categories: lorem
 tags:
 image:
 ---
