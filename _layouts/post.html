@@ -70,9 +70,8 @@ layout: default
       <div class="col-lg-8">
         <div class="container my-3">
           <div class="row align-items-center justify-content-center">
-            <div itemprop="articleBody">
+            <div itemprop="articleBody" class="text-justify">
               {{ content }}
-              </span>
               <p>
                 {% for cat in page.categories %}
                   <a class="btn btn-light" href="{{ "/browse?q=" | append: cat | relative_url }}">{{ cat }}</a>
