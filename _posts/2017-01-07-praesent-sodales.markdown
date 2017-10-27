@@ -1,11 +1,7 @@
 ---
 layout: post
 title: Praesent sodales
-date:
-last_modified_at:
 categories: lorem
-tags:
-image:
 ---
 Aliquam commodo elementum tellus, sed dignissim metus accumsan varius. Quisque orci metus, vehicula sit amet dictum a, cursus et nunc. Suspendisse facilisis egestas orci, at pretium odio tincidunt sed. Vivamus ligula arcu, blandit at egestas sed, euismod pulvinar ligula. Nullam tortor nisi, placerat mattis metus et, rhoncus sollicitudin nunc. Etiam ac faucibus massa. Phasellus finibus lorem ac fringilla convallis.
 
