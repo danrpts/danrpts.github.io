@@ -79,7 +79,7 @@
       that.canvas.height = that.size.clientHeight;
       that.x0 = Math.round(that.canvas.width / 2);
       that.y0 = Math.round(that.canvas.height / 2);
-      that.z0 = that.x0 + that.y0;
+      that.z0 = Math.max(that.x0, that.y0);
     }
     resize();
     window.addEventListener("optimizedResize", resize);
