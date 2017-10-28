@@ -8,6 +8,28 @@
 .jumbotron-image > header {
   color: white;
   text-shadow: 2px 2px 2px black;
+
+  h1 {
+    // Extra small devices (portrait phones, less than 576px)
+    @media (max-width: 575px) {
+      font-size: 3rem;
+    }
+
+    // Small devices (landscape phones, less than 768px)
+    @media (min-width: 576px) and (max-width: 767px) {
+      font-size: 4rem;
+    }
+
+    // Medium devices (tablets, less than 992px)
+    @media (min-width: 578px) and (max-width: 991px) {
+      font-size: 5rem;
+    }
+
+    // Large devices (desktops, less than 1200px)
+    @media (min-width: 992px) {
+      font-size: 6rem;
+    }
+  }
 }
 
 .arrow-box {
