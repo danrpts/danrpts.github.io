@@ -15,7 +15,7 @@ avatar: false
     {% assign post_title_length = site.overrides.post_title_length | default: 20 %}
 
       <div class="my-4 d-none" data-name="{{ cat }}">
-        <p class="display-4">{{ category | first }} ({{ nposts }})</p>
+        <p class="lead">{{ category | first }} ({{ nposts }})</p>
           {% for posts in category %}
             {% for post in posts %}
               {% if post.title %}
