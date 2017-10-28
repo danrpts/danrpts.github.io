@@ -18,24 +18,24 @@ layout: default
     </header>
   </div>
 
-<div class="container">
-  <div class="row justify-content-center">
-    <div class="col-lg-9">
-      <div class="d-flex">
-        <span class="mr-auto">
-          {% include paginator.html %}
-        </span>
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-lg-9">
+        <div class="d-flex">
+          <span class="mr-auto">
+            {% include paginator.html %}
+          </span>
 
-        <span class="ml-auto">
-          <a class="btn" href="{{ "/feed.xml" | relative_url }}" role="button">
-            <i class="fa fa-feed" aria-hidden="true"></i>
-          </a>
-        </span>
+          <span class="ml-auto">
+            <a class="btn" href="{{ "/feed.xml" | relative_url }}" role="button">
+              <i class="fa fa-feed" aria-hidden="true"></i>
+            </a>
+          </span>
+        </div>
+        <hr />
       </div>
-      <hr />
     </div>
   </div>
-</div>
 
   <div class="container my-4">
     <div class="row justify-content-center">
