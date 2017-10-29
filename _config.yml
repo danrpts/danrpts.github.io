@@ -53,7 +53,8 @@ defaults:
       path: "_posts"
       type: posts
     values:
-      layout: page
+      layout: post
+      image: galaxy.jpg
       disqus_comments: true
       read_time: true
 
