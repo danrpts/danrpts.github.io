@@ -25,7 +25,7 @@ Build site
 
     bundle exec jekyll build
 
-Build and server site
+Build and serve site
 
     bundle exec jekyll serve
 
