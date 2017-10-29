@@ -1,15 +1,16 @@
 ## Tuvok
-The logical Jekyll theme for an elegant GitHub Pages blog.
+Tuvok is a responsive card-column theme for Jekyll built on Bootstrap 4. It is the logical choice for an elegant blog, portfolio, or personal site hosted on GitHub Pages.
 
 ![tuvok-home-screenshot](assets/images/tuvok-home-screenshot.png)
 
 ## Installation
 
 Clone
+
     git clone https://github.com/danrpts/tuvok.git
-    cd tuvok
 
 Branch
+
     git remote add tuvok https://github.com/danrpts/tuvok.git
     git fetch
     git checkout -b tuvok --track tuvok/master
@@ -17,12 +18,15 @@ Branch
 ## Usage
 
 Download dependencies
-    bundle install
+
+   bundle install
 
 Build site
+
     bundle exec jekyll build
 
 Build and server site
+
     bundle exec jekyll serve
 
 ## Configuration
