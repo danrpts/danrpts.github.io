@@ -28,9 +28,6 @@ image: galaxy.jpg
             {% if page.read_time %}
               • {% include read_time.html html=page.content %}
             {% endif %}
-            {% if site.disqus_shortname and page.disqus_comments and jekyll.environment == "production"%}
-              • <a href="{{ page.url | append: "#disqus_thread" | relative_url }}">0 Comments</a>
-            {% endif %}
           </p>
         </div>
       </div>
@@ -42,6 +39,38 @@ image: galaxy.jpg
   <div class="container">
     <div class="row justify-content-center">
       <div class="col-lg-8">
+        <div class="d-flex">
+
+          <span class="d-md-block d-lg-none mr-auto">
+            {% assign url = page.url | absolute_url | url_encode %}
+            {% assign title = page.title | url_encode %}
+            {% assign twitter_query = "https://twitter.com/intent/tweet?url=" | append: url | append: "&text=" | append: title %}
+            {% assign facebook_query = "https://facebook.com/sharer.php?u=" | append: url | append: "&t=" | append: title %}
+            {% assign googleplus_query = "https://plus.google.com/share?url=" | append: url %}
+            {% assign linkedin_query = "http://www.linkedin.com/shareArticle?mini=true&url=" | append: url | append: "&title=" | append: title %}
+            <a class="btn btn-link" href="{{ googleplus_query }}" rel="nofollow" target="_blank" role="button">
+              <i class="fa fa-google-plus" aria-hidden="true"></i>
+            </a>
+            <a class="btn btn-link" href="{{ twitter_query }}{% if site.twitter.username %}{{ "&via=" | append: site.twitter.username }}{% endif %}" rel="nofollow" target="_blank" role="button">
+              <i class="fa fa-twitter" aria-hidden="true"></i>
+            </a>
+            <a class="btn btn-link muted" href="{{ facebook_query }}" rel="nofollow" target="_blank" role="button">
+              <i class="fa fa-facebook" aria-hidden="true"></i>
+            </a>
+            <a class="btn btn-link" href="{{ linkedin_query }}" rel="nofollow" target="_blank" role="button">
+              <i class="fa fa-linkedin" aria-hidden="true"></i>
+            </a>
+          </span>
+
+          <span class="ml-auto">
+            {% if site.disqus_shortname and page.disqus_comments and jekyll.environment == "production" %}
+              <a class="btn btn-link" role="button" href="{{ page.url | append: "#disqus_thread" | relative_url }}">
+                <i class="fa fa-comment" aria-hidden="true"></i>
+              </a>
+            {% endif %}
+          </span>
+
+        </div>
         <hr />
       </div>
     </div>
