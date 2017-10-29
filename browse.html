@@ -8,34 +8,93 @@ avatar: false
 
 <!-- browse.html -->
 
-<div class="list-group my-4">
-  {% for category in site.categories %}
-    {% assign nposts = category | last | size %}
-    {% assign cat = category | first | escape %}
-    {% assign post_title_length = site.overrides.post_title_length | default: 20 %}
+<div>
 
-      <div class="my-4 d-none" data-name="{{ cat }}">
-        <p class="lead">{{ category | first }} ({{ nposts }})</p>
-          {% for posts in category %}
-            {% for post in posts %}
-              {% if post.title %}
-                <a href="{{ post.url | escape_url }}" class="list-group-item">
-                  {{ post.title | truncate: post_title_length  | escape }}
-                </a>
-              {% endif %}
+  <div id="all-results" class="d-none">
+    <hr />
+    <p class="lead text-center">Explore all topics below.</p>
+  </div>
+  <div id="no-results" class="d-none">
+    <div class="alert alert-warning alert-dismissible fade show" role="alert">
+        No results for <strong id="no-results-keyword"></strong>.
+      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <hr />
+    <p class="lead text-center">Explore other topics below.</p>
+  </div>
+  <div id="results" class="d-none">
+    <div class="alert alert-info alert-dismissible fade show" role="alert">
+        <strong id="results-count"></strong> results for <strong id="results-keyword"></strong>.
+      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <hr />
+  </div>
+
+  <div class="list-group my-4">
+    {% for category in site.categories %}
+      {% assign nposts = category | last | size %}
+      {% assign cat = category | first | escape %}
+      {% assign post_title_length = site.overrides.post_title_length | default: 20 %}
+        <div class="my-4 d-none" data-name="{{ cat }}" data-count="{{ nposts }}">
+          <p id="category-link" class="lead">
+            <a href="{{ "/browse?q=" | append: cat | relative_url }}">{{ category | first }} ({{ nposts }})</a>
+          </p>
+            {% for posts in category %}
+              {% for post in posts %}
+                {% if post.title %}
+                  <a href="{{ post.url | escape_url }}" class="list-group-item">
+                    {{ post.title | truncate: post_title_length  | escape }}
+                  </a>
+                {% endif %}
+              {% endfor %}
             {% endfor %}
-          {% endfor %}
-      </div>
-  {% endfor %}
+        </div>
+    {% endfor %}
+  </div>
+
 </div>
 
 <script>
-  window.onload = function() {
-    // search hack
-    // inspired by https://alexpearce.me/2016/02/simpler-jekyll-searching/
-    var searchParams = new URLSearchParams(location.search);
-    var query = searchParams.has('q') && searchParams.get('q');
-    if (!query) $('[data-name]').removeClass('d-none');
-    else $(`[data-name='${query}']`).removeClass('d-none');
+
+  // credit: https://cmatskas.com/get-url-parameters-using-javascript/
+  var parseQueryString = function(url) {
+    var urlParams = {};
+    url.replace(
+      new RegExp("([^?=&]+)(=([^&]*))?", "g"),
+      function($0, $1, $2, $3) {
+        urlParams[$1] = $3;
+      }
+    );
+
+    return urlParams;
   }
+
+  // hack inspired by https://alexpearce.me/2016/02/simpler-jekyll-searching/
+  window.onload = function() {
+    var urlParams = parseQueryString(location.search);
+    var searchQuery = urlParams.hasOwnProperty("q") && urlParams["q"];
+    if (!searchQuery) {
+      $("[data-name]").removeClass("d-none");
+      $("#all-results").removeClass("d-none");
+    } else {
+      var found = $(`[data-name='${searchQuery}']`);
+      if (found.length > 0) {
+        $("#results").removeClass("d-none");
+        var count = found.data("count");
+        $("#results-count").text(count);
+        $("#results-keyword").text(urlParams["q"]);
+        found.removeClass("d-none");
+        found.children("#category-link").addClass("d-none");
+      } else {
+        $("#no-results").removeClass("d-none");
+        $("#no-results-keyword").text(urlParams["q"]);
+        $("[data-name]").removeClass("d-none");
+      }
+    }
+  }
+
 </script>
