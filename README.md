@@ -19,7 +19,7 @@ Branch
 
 Download dependencies
 
-   bundle install
+    bundle install
 
 Build site
 
