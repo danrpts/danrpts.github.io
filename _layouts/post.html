@@ -78,40 +78,40 @@ image: galaxy.jpg
 
   <div class="container">
     <div class="row">
-      <aside class="d-none d-lg-block col-lg-2 sticky-sidebar-left">
-          <div class="text-center" id="sticky-sidebar-share">
-            <small>Share</small>
-            {% assign url = page.url | absolute_url | url_encode %}
-            {% assign title = page.title | url_encode %}
-            {% assign twitter_query = "https://twitter.com/intent/tweet?url=" | append: url | append: "&text=" | append: title %}
-            {% assign facebook_query = "https://facebook.com/sharer.php?u=" | append: url | append: "&t=" | append: title %}
-            {% assign googleplus_query = "https://plus.google.com/share?url=" | append: url %}
-            {% assign linkedin_query = "http://www.linkedin.com/shareArticle?mini=true&url=" | append: url | append: "&title=" | append: title %}
+      <aside class="d-none d-lg-block col-lg-2">
+        <div class="text-center sticky-sidebar-left">
+          <small>Share</small>
+          {% assign url = page.url | absolute_url | url_encode %}
+          {% assign title = page.title | url_encode %}
+          {% assign twitter_query = "https://twitter.com/intent/tweet?url=" | append: url | append: "&text=" | append: title %}
+          {% assign facebook_query = "https://facebook.com/sharer.php?u=" | append: url | append: "&t=" | append: title %}
+          {% assign googleplus_query = "https://plus.google.com/share?url=" | append: url %}
+          {% assign linkedin_query = "http://www.linkedin.com/shareArticle?mini=true&url=" | append: url | append: "&title=" | append: title %}
 
-            <ul class="list-unstyled">
-              <li>
-                <a class="btn btn-link" href="{{ googleplus_query }}" rel="nofollow" target="_blank" role="button">
-                  <i class="fa fa-google-plus" aria-hidden="true"></i>
-                </a>
-              </li>
-              <li>
-                <a class="btn btn-link" href="{{ twitter_query }}{% if site.twitter.username %}{{ "&via=" | append: site.twitter.username }}{% endif %}" rel="nofollow" target="_blank" role="button">
-                  <i class="fa fa-twitter" aria-hidden="true"></i>
-                </a>
-              </li>
-              <li>
-                <a class="btn btn-link muted" href="{{ facebook_query }}" rel="nofollow" target="_blank" role="button">
-                  <i class="fa fa-facebook" aria-hidden="true"></i>
-                </a>
-              </li>
-              <li>
-                <a class="btn btn-link" href="{{ linkedin_query }}" rel="nofollow" target="_blank" role="button">
-                  <i class="fa fa-linkedin" aria-hidden="true"></i>
-                </a>
-              </li>
-            </ul>
-          </div>
-        </aside>
+          <ul class="list-unstyled">
+            <li>
+              <a class="btn btn-link" href="{{ googleplus_query }}" rel="nofollow" target="_blank" role="button">
+                <i class="fa fa-google-plus" aria-hidden="true"></i>
+              </a>
+            </li>
+            <li>
+              <a class="btn btn-link" href="{{ twitter_query }}{% if site.twitter.username %}{{ "&via=" | append: site.twitter.username }}{% endif %}" rel="nofollow" target="_blank" role="button">
+                <i class="fa fa-twitter" aria-hidden="true"></i>
+              </a>
+            </li>
+            <li>
+              <a class="btn btn-link muted" href="{{ facebook_query }}" rel="nofollow" target="_blank" role="button">
+                <i class="fa fa-facebook" aria-hidden="true"></i>
+              </a>
+            </li>
+            <li>
+              <a class="btn btn-link" href="{{ linkedin_query }}" rel="nofollow" target="_blank" role="button">
+                <i class="fa fa-linkedin" aria-hidden="true"></i>
+              </a>
+            </li>
+          </ul>
+        </div>
+      </aside>
       <div class="col-lg-8">
         <div class="container my-3">
           <div class="row align-items-center justify-content-center">
