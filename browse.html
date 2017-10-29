@@ -11,9 +11,16 @@ avatar: false
 <div>
 
   <div id="all-results" class="d-none">
+    <div id="unsupported" class="d-none alert alert-danger alert-dismissible fade show" role="alert">
+        Search not yet supported for your browser.
+      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
     <hr />
     <p class="lead text-center">Explore all topics below.</p>
   </div>
+
   <div id="no-results" class="d-none">
     <div class="alert alert-warning alert-dismissible fade show" role="alert">
         No results for <strong id="no-results-keyword"></strong>.
@@ -24,6 +31,7 @@ avatar: false
     <hr />
     <p class="lead text-center">Explore other topics below.</p>
   </div>
+
   <div id="results" class="d-none">
     <div class="alert alert-info alert-dismissible fade show" role="alert">
         <strong id="results-count"></strong> results for <strong id="results-keyword"></strong>.
@@ -60,38 +68,34 @@ avatar: false
 
 <script>
 
-  // credit: https://cmatskas.com/get-url-parameters-using-javascript/
-  var parseQueryString = function(url) {
-    var urlParams = {};
-    url.replace(
-      new RegExp("([^?=&]+)(=([^&]*))?", "g"),
-      function($0, $1, $2, $3) {
-        urlParams[$1] = $3;
-      }
-    );
-
-    return urlParams;
-  }
-
   // hack inspired by https://alexpearce.me/2016/02/simpler-jekyll-searching/
   window.onload = function() {
-    var urlParams = parseQueryString(location.search);
-    var searchQuery = urlParams.hasOwnProperty("q") && urlParams["q"];
+
+    if (!window.URLSearchParams) {
+      $("#unsupported").removeClass("d-none");
+      $("[data-name]").removeClass("d-none");
+      $("#all-results").removeClass("d-none");
+      return;
+    }
+
+    var urlParams = new URLSearchParams(window.location.search);
+    var searchQuery = urlParams.has("q") && urlParams.get("q");
     if (!searchQuery) {
       $("[data-name]").removeClass("d-none");
       $("#all-results").removeClass("d-none");
     } else {
+
       var found = $(`[data-name='${searchQuery}']`);
       if (found.length > 0) {
         $("#results").removeClass("d-none");
         var count = found.data("count");
         $("#results-count").text(count);
-        $("#results-keyword").text(urlParams["q"]);
+        $("#results-keyword").text(searchQuery);
         found.removeClass("d-none");
         found.children("#category-link").addClass("d-none");
       } else {
         $("#no-results").removeClass("d-none");
-        $("#no-results-keyword").text(urlParams["q"]);
+        $("#no-results-keyword").text(searchQuery);
         $("[data-name]").removeClass("d-none");
       }
     }
