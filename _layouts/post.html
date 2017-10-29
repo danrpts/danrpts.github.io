@@ -1,12 +1,21 @@
 ---
 layout: default
+image: galaxy.jpg
 ---
 
 <!-- _layouts/post.html -->
 
 <article itemscope itemtype="http://schema.org/BlogPosting">
 
-  <div class="jumbotron-image jumbotron jumbotron-fluid border border-top-0 border-left-0 border-right-0 mb-0">
+  <div class="jumbotron-image jumbotron jumbotron-fluid border border-top-0 border-left-0 border-right-0 mb-0"
+    {% if page.image %}
+    style="background-image: radial-gradient(
+        ellipse at center,
+        rgba(36, 41, 56, 0.5) 25%,
+        rgba(3, 3, 4, 0.8) 100%
+      ), url({{ page.image | prepend: "assets/images/" | relative_url }}) !important"
+    {% endif %}
+    >
     <header class="container">
       <div class="row justify-content-center">
         <div class="col-lg-8">
@@ -19,9 +28,8 @@ layout: default
             {% if page.read_time %}
               • {% include read_time.html html=page.content %}
             {% endif %}
-            {% assign author = page.author | default: site.author %}
-            {% if author %}
-              • <span itemprop="author" itemscope itemtype="http://schema.org/Person"><span itemprop="name">{{ author }}</span></span>
+            {% if site.disqus_shortname and page.disqus_comments and jekyll.environment == "production"%}
+              • <a href="{{ page.url | append: "#disqus_thread" | relative_url }}">0 Comments</a>
             {% endif %}
           </p>
         </div>
@@ -101,7 +109,7 @@ layout: default
   </div>
 
 
-  {% if site.disqus_shortname and page.disqus_comments and jekyll.environment == "production"%}
+  {% if site.disqus_shortname and page.disqus_comments and jekyll.environment == "production" %}
     <div class="container">
       <div class="row justify-content-center">
         <div class="col-lg-8">
@@ -110,8 +118,6 @@ layout: default
         </div>
       </div>
     </div>
-  {% else %}
-    <p class="text-center mt-4"><em>Comments disabled.</em></p>
   {% endif %}
 
 </article>

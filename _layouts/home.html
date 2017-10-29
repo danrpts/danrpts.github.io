@@ -23,7 +23,6 @@ layout: default
           <span class="mr-auto">
             {% include paginator.html %}
           </span>
-
           <span class="ml-auto">
             <a class="btn" href="{{ "/feed.xml" | relative_url }}" role="button">
               <i class="fa fa-feed" aria-hidden="true"></i>
@@ -44,7 +43,7 @@ layout: default
           <div class="card d-inline-block">
             <a class="card-link" href="{{ post.url | relative_url}}"></a>
             {% if post.image %}
-            <img class="card-img-top" src="{{ post.image | relative_url }}" aria-hidden="true">
+            <img class="card-img-top" src="{{ post.image | prepend: "assets/images/" | relative_url }}" aria-hidden="true">
             {% endif %}
             <div class="card-body">
               {% assign post_title_length = site.overrides.post_title_length | default: 20 %}

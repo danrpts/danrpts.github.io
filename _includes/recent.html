@@ -6,7 +6,11 @@
   <div class="card-deck">
     {% for post in site.related_posts limit: 3 %}
       <div class="card">
-        <img class="card-img-top" src="{{ post.image | default: site.teaser | relative_url }}" style="height:100px;" aria-hidden="true">
+        <img class="card-img-top" aria-hidden="true"
+        {% if page.image %}
+          height="100px"
+          src="{{ page.image | prepend: "assets/images/" | relative_url }}"
+        {% endif %} />
         <a class="card-link" href="{{ post.url | relative_url }}"></a>
         <div class="card-body">
           {% assign post_title_length = site.overrides.post_title_length | default: 20 %}
