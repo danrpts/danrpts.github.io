@@ -4,14 +4,13 @@
 {% if site.mailchimp_action and site.mailchimp_nobot %}
   <div class="container my-4">
     <div class="row justify-content-center">
-      <div class="col-md-6">
-        <hr />
-        <p class="display-4 text-center">Stay tuned</p>
+      <div class="col-10 col-md-7 col-lg-6">
+        <p class="lead text-center text-responsive">Stay tuned</p>
         <form action="{{ site.mailchimp_action | url_escape }}" method="post" name="mc-embedded-subscribe-form" target="_blank" novalidate>
           <div class="form-group">
             <div class="input-group input-group">
 
-              <input type="email" value="" name="EMAIL" class="lead form-control" placeholder="Enter your email address ..." required>
+              <input type="email" value="" name="EMAIL" class="lead form-control" placeholder="email address ..." required>
 
               <!-- real people should not fill this in and expect good things - do not remove this or risk form bot signups-->
               <div style="position: absolute; left: -5000px;" aria-hidden="true">

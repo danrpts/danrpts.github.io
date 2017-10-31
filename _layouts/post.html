@@ -19,7 +19,7 @@ image: galaxy.jpg
     <header class="container">
       <div class="row justify-content-center">
         <div class="col-lg-8">
-          <h1 class="display-4" itemprop="name headline">{{ page.title | escape }}</h1>
+          <h1 class="display-1 text-responsive" itemprop="name headline">{{ page.title | escape }}</h1>
           <p>
             <time datetime="{{ page.date | date_to_xmlschema }}" itemprop="datePublished">
               {% assign date_format = site.overrides.date_format | default: "%b %-d, %Y" %}

@@ -5,13 +5,13 @@
   <div class="row justify-content-center">
     <div class="col-lg-8">
       <hr />
-      <nav class="navbar navbar-light bg-light bg-white px-0">
+      <nav class="navbar navbar-light bg-light bg-white px-0 flex-column-reverse flex-sm-row">
 
-        <span class="navbar-text mr-auto">
+        <span class="navbar-text">
           <small><i class="fa fa-copyright" aria-hidden="true"></i> 2017 <a href="https://github.com/danrpts/tuvok" target="_blank">Daniel Peterson</a>.</small>
         </span>
 
-        <span>
+        <span class="">
           <a class="btn" href="{{ site.social.links[0] | default: "#" }}" role="button">
             <i class="fa fa-github" aria-hidden="true"></i>
           </a>
@@ -23,7 +23,7 @@
           </a>
         </span>
 
-        <span class="ml-auto">
+        <span class="navbar-text">
 
           <small><a href="{{ page_url | append: "#top" | relative_url }}">&uarr;</a></small>
           <small><a href="{{ "/" | relative_url }}">Home</a></small>
