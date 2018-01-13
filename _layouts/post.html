@@ -7,7 +7,7 @@ image: galaxy.jpg
 
 <article itemscope itemtype="http://schema.org/BlogPosting">
 
-  <div class="jumbotron-image jumbotron jumbotron-fluid border border-top-0 border-left-0 border-right-0 mb-0"
+  <div class="jumbotron-image jumbotron jumbotron-fluid border border-top-0 border-left-0 border-right-0 mb-0 mt-1"
     {% if page.image %}
     style="background-image: radial-gradient(
         ellipse at center,
@@ -34,7 +34,15 @@ image: galaxy.jpg
     </header>
   </div>
 
-  <div class="arrow-box mb-4"></div>
+  <div class="arrow-box"></div>
+
+  <div class="container">
+    <div class="row justify-content-center my-2">
+      <div class="col-lg-8">
+        {% include mini-header.html %}
+      </div>
+    </div>
+  </div>
 
   <div class="container">
     <div class="row justify-content-center">
@@ -62,16 +70,7 @@ image: galaxy.jpg
             </a>
           </span>
 
-          <span class="ml-auto">
-            {% if site.disqus_shortname and page.disqus_comments and jekyll.environment == "production" %}
-              <a class="btn btn-link" role="button" href="{{ page.url | append: "#disqus_thread" | relative_url }}">
-                <i class="fa fa-comment" aria-hidden="true"></i>
-              </a>
-            {% endif %}
-          </span>
-
         </div>
-        <hr />
       </div>
     </div>
   </div>
@@ -136,7 +135,6 @@ image: galaxy.jpg
       </div>
     </div>
   </div>
-
 
   {% if site.disqus_shortname and page.disqus_comments and jekyll.environment == "production" %}
     <div class="container">
