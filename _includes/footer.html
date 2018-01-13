@@ -2,6 +2,7 @@
 <!-- _includes/footer.html -->
 
 <footer class="container mb-3">
+
   <div class="row justify-content-center">
     <div class="col-lg-8">
       <hr />
@@ -24,21 +25,29 @@
         </span>
 
         <span class="navbar-text">
-
           <small><a href="{{ page_url | append: "#top" | relative_url }}">&uarr;</a></small>
-          <small><a href="{{ "/" | relative_url }}">Home</a></small>
-
+          <small><a href="/">Blog</a></small>
           {% assign paths = site.pages | map: "path" %}
-
           {% for path in paths %}
             {% assign page = site.pages | where: "path", path | first %}
             {% if page.title %}
-            <small><a href="{{ page.url | relative_url }}">{{ page.title | escape }}</a></small>
-            {%endif%}
+            <small><a href="{{ page.url | relative_url }}">{{ page.title | escape | capitalize }}</a></small>
+            {% endif %}
           {% endfor %}
         </span>
 
       </nav>
+    </div>
+  </div>
+  <div class="row justify-content-center mt-4">
+    <div class="col-lg-8">
+      <a href="bitcoin:{{ site.wallet.btc }}">
+        <img width="100" height="100" class="img-thumbnail mr-1" src={{ site.wallet.btc | prepend: "/assets/images/" | append: "_btc_qr_code.png" | absolute_url }}></a>
+      </a>
+      <a href="ethereum:{{ site.wallet.eth }}">
+        <img width="100" height="100" class="img-thumbnail ml-1" src={{ site.wallet.eth | prepend: "/assets/images/" | append: "_eth_qr_code.png" | absolute_url }}></a>
+      </a>
+      <small class="form-text text-muted text-left">Share a token of appreciation.</small>
     </div>
   </div>
 </footer>
