@@ -4,28 +4,26 @@ layout: default
 
 <!-- _layouts/page.html -->
 
-<article>
+<div>
 
-  <header class="container">
-    <div class="row justify-content-center">
-      <div class="col-lg-8 mt-4">
-        {% assign avatar = page.avatar | default: site.avatar %}
-        {% if avatar and page.avatar != false %}
-        <p class="text-center">
-          <img width="34% \9" src="{{ avatar | escape_url }}" alt="avatar" class="rounded-circle img-fluid img-thumbnail">
-        </p>
-        {%endif%}
-        <h1 class="display-3 text-center">{{ page.title | escape }}</h1>
-      </div>
-    </div>
-  </header>
+  <div class="jumbotron-image jumbotron jumbotron-fluid border border-top-0 border-left-0 border-right-0 mb-0 mt-1">
+    <header class="container">
+      <h1 class="display-1 text-center text-responsive">{{ site.title }}</h1>
+      <p class="lead text-center">{{ site.description }}</p>
+      <p class="text-center">
+        <a class="github-button" href="https://github.com/danrpts" data-size="large" aria-label="Follow @danrpts on GitHub">Follow @danrpts</a>
+      </p>
+    </header>
+  </div>
 
   <div class="container">
-    <div class="row justify-content-center">
+    <div class="row justify-content-center my-3">
       <div class="col-lg-8">
-        <p class="text-justify">{{ content }}</p>
+        {% include mini-header.html %}
       </div>
     </div>
   </div>
 
-</article>
+  {{ content }}
+
+</div>
