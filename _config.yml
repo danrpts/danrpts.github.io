@@ -7,8 +7,11 @@ author: Daniel Peterson
 email: its@superdan.io
 avatar: //avatars.githubusercontent.com/danrpts
 description: Daniel Peterson's Blog.
-url : //superdan.io
+url: //superdan.io
 repository : danrpts/danrpts.github.io
+wallet:
+  btc: "1GvUmbdmM9iQ3GV7kFpBqKEUaTA33VtfwP"
+  eth: "0x6C0Ddb1361cc7380C45bc6812b018B8EEccf3343"
 social:
   links:
     - //github.com/danrpts
