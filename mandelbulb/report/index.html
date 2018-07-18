@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <title>Mandelbulb</title>
+  <link rel="stylesheet" href="./bootstrap.min.css">
+</head>
+</head>
+
+<body>
+
+  <div class="container">
+    <div class="page-header">
+      <h1>Mandelbulb Report <small>Daniel Peterson</small></h1>
+      <a href="../src/index.html" type="button" class="btn btn-default">Live Demo</a>
+    </div>
+  </div>
+
+  <div class="container">
+    <div class="row">
+      <div class="col-md-8">
+        <h2>History</h2>
+        <p>
+          &nbsp;&nbsp;&nbsp;The Mandelbrot set is the definitive fractal. So it is no surprise that one would contemplate its 3D anolog. This is exactly what Daniel White was determined to find in late 2007; in his search for the "Holy Grail" of fractals. White
+          was inspired by Rudy Rucker's early description in "As Above, So Below", published 1987, as "a root - like object that's like a big sphere with a dimple in the bottom and with bulbs on it, and further warts on the bulbs." So began White's earliest
+          attempts to render such a fractal along with his success. However, there was one major complication, and it has to do with how the 2D version is defined. Mandelbrot's function operates on complex numbers and so it is only defined in ℝ<sup>2</sup>.
+          What is one to do in order to obtain this ellusive bulb? We will explore this later.
+        </p>
+      </div>
+      <div class="col-md-4">
+        <img src="./order8.png" alt="8th order" class="img-thumbnail">
+      </div>
+    </div>
+    <hr/>
+
+    <div class="row">
+      <div class="col-md-4">
+        </br><img src="./controls.png" alt="controls" class="img-thumbnail">
+      </div>
+      <div class="col-md-8">
+        <h2>How to use</h2>
+        <p>
+          &nbsp;&nbsp;&nbsp; This application has control panels for manipulating both the Mandelbulb formula and the rendering engine. Together these controls can produce a variety of interesting scenes in real time.
+        </p>
+        <div class="row">
+          <div class="col-md-6">
+
+
+            <div class="panel panel-default">
+              <div class="panel-heading">Mandelbulb Controls</div>
+              <div class="panel-body">
+                <ul>
+                  <li><strong>Order</strong>: Changes the complexity by altering the power on the function.</li>
+                  <li><strong>Depth</strong>: Changes the detail by altering iteration depth of the function.</li>
+                  <li><strong>Rotation</strong>: Orients about the object's axes.</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="panel panel-default">
+              <div class="panel-heading">Render Controls</div>
+              <div class="panel-body">
+                <ul>
+                  <li><strong>Fineness</strong>: Changes the detail by altering the minimum distance to surface.</li>
+                  <li><strong>Zoom</strong>: Changes the focal length of pinhole camera.</li>
+                  <li><strong>Eye</strong>: Translates the camera in world space.</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <hr/>
+
+    <div class="row">
+      <div class="col-md-8">
+        <h2>How it works</h2>
+        <h3>Mandelbulb Formula</h3>
+        <p>
+          &nbsp;&nbsp;&nbsp; As mentioned briefly above there is no clear 3D analog for the 2D Mandelbrot set. This has purely to do with the way complex numbers are defined. A complex has only two components and a specific algebra for multiplying two of them together.
+          One could define a third component, but then would have to invent some algebra for multiplying these three component numbers. Let us call them "triplex."
+        </p>
+        <p>
+          &nbsp;&nbsp;&nbsp; Multiplying triplex is important because the Mandelbrot function requires a triplex to be squared. One could define this multiplication similar to the way it is defined for the two component complex, but the result is vaguely Quarternion.
+          One could even use a the Quarternion approach to extend the complex number into the 4th dimenstion, but these renderings do not produce the warty structure Rucker first embossed in our minds.
+        </p>
+        <p>
+          &nbsp;&nbsp;&nbsp; The solution to this problem is a bit of a hack. It is simple, clever and produces the features desired for a 3D Mandelbrot set. It involves converting from a cartesian coordinate system into a polar one, and then performing complex
+          mulitplication using rotations. Let us see this method first applied on a two component complex number.
+          <dl class="dl-horizontal">
+            <dt>let</dt>
+            <dd><var>c = (x, y)</var></dd>
+            <dt>then</dt>
+            <dd><var>c' = (r, &Theta;)</var></dd>
+            <dt>finally</dt>
+            <dd><var>|c<sup>2</sup>| = |c'<sup>2</sup>| = (r<sup>2</sup>,  2&Theta;)</var></dd>
+          </dl>
+
+          &nbsp;&nbsp;&nbsp; This arithmetic is sound for multiplying complex numbers in polar form. However, what is done next is not. The hack is now to perform this same method on a triplex by representing it in spherical form.
+          <dl class="dl-horizontal">
+            <dt>let</dt>
+            <dd><var>t = (x, y, z)</var></dd>
+            <dt>then</dt>
+            <dd><var>t' = (r, &Theta;, &Phi;)</var></dd>
+            <dt>and</dt>
+            <dd><var>|t<sup>2</sup>| = |t'<sup>2</sup>| = (r<sup>2</sup>,  2&Theta;, 2&Phi;)</var></dd>
+            <dt>finally</dt>
+            <dd><var>|t<sup>n</sup>| = |t'<sup>n</sup>| = (r<sup>n</sup>,  n&Theta;, n&Phi;)</var></dd>
+          </dl>
+
+          &nbsp;&nbsp;&nbsp; The Mandelbrot function now has leverage on the third dimension and one can perform the necessary triplex multiplication. Notice how 'n' was used to generalize the power on the triplex. This is known as the "order" of the Mandelbulb.
+          After White had used this technique to render he was still scartching his head over the lack of complexity. It was not until a mathematician, Paul Nylander, suggested "raising the power" on the function in order to increase the complexity of
+          the fractal. It worked like a charm and hence the generalized form. This is all summed up by the following formula known as "White and Nylander's n<sup>th</sup> Power."
+          <dl class="dl-horizontal">
+            <dt>let</dt>
+            <dd><var>s = some triplex in ℝ<sup>3</sup></var></dd>
+            <dt>and</dt>
+            <dd><var>u = (r, &Theta;, &Phi;)</var></dd>
+            <dt>then</dt>
+            <dd>Z(u)<sub>i</sub> = Z(u)<sup>n</sup><sub>i-1</sub> + v</var>
+            </dd>
+          </dl>
+        </p>
+      </div>
+      <div class="col-md-4">
+        <img src="./repeat.png" alt="high order" class="img-thumbnail">
+      </div>
+    </div>
+    <hr/>
+
+    <div class="row">
+      <div class="col-md-4">
+        <img src="./top.png" alt="top" class="img-thumbnail">
+      </div>
+      <div class="col-md-8">
+        <h3>Rendering</h3>
+
+        <p>
+          &nbsp;&nbsp;&nbsp; The goal of this project was to produce an interactive Mandelbulb using ray casting; which it does by using a handy performance tweak known as distance estimation. Conceptually, plain ray casting is done by marching a ray some constant
+          amount from an origin in the direction of a target surface. The surface is then intersected by this ray and gives us a point in space. Ray casting is simple enough, but marching a constant amount can be slow, so it must be sped up with distance
+          estimation. Note that ray casting is also known as "sphere tracing", becasue it is helpul to think of the amount marched as the radius of a sphere, this will become more apparent when distance estimation is discussed.
+        </p>
+
+        <p>
+          &nbsp;&nbsp;&nbsp; It is important to note that this application only ever defines two trianges; so x-y coordinates are interpolated across the vertex-fragment interface. Meaning that all rendering is done on the GPU and this allows the application to
+          exploit its massively parallelized architecture. Specifically, rendering is done in the fragment shader and this is where the raycast engine is specified. Describing exactly how to set up a raycaster is beyond the scope of this paper and so
+          we will only discuss the topic conceptually from now on. But in a nutshell, the fragment shader must define a ray from a camera and this unique x-y pair, then compute an appropriate z value by marching this ray to an implicit surface defined
+          by some formula, i.e. White and Nylander's n<sup>th</sup> Power. See John C. Hart (1994) <u><a href="../literature/rayCastingImplicitSurfaces.pdf">Sphere Tracing: A Geometric Method for the Antialiased
+                    Ray Tracing of Implicit Surfaces.</a></u>
+        </p>
+
+        <p>
+          &nbsp;&nbsp;&nbsp; The real time nature of this application is due to distance estimation. Distance estimators are just functions that return a safe distance for the ray to march without hitting the surface. So instead of moving in small constant steps,
+          it can move large distances along the ray with guarantee of not hitting the surface until some minimum distance is reached; upon which the ray caster bails out. Back to the sphere analogy, one can visualize this procedure as a sequence of spheres
+          with decreasing radii to the surface. The smallest sphere is then the minimum distance specified for the raycaster to bail out on. This minimum distance is important in terms of the Mandelbulb because it defines a level of detail in the fractal
+          surface: smaller spheres are able to cut deeper into the fractal and produce more complexity.
+        </p>
+
+        <p>
+          &nbsp;&nbsp;&nbsp; John C. Hart did work with distance estimated 3D fractals back in 1989 <u><a href="../literature/distanceEstimating3DFractals.pdf">
+                    Ray Tracing Deterministic 3-D Fractals.</a></u> Specifically he used distance estimators to render 3D Julia sets using Quarternions. Using this paper one could find a way to create a distance estimator for the Mandelbulb function defined
+          above. Hint: use the chain rule.
+          <dl class="dl-horizontal">
+            <dt>let</dt>
+            <dd><var>Z(u)<sub>i</sub> = Z(u)<sup>n</sup><sub>i-1</sub> + v</var></dd>
+            <dt>then</dt>
+            <dd><var>Z'(u)<sub>i</sub> = nZ(u)<sup>n-1</sup><sub>i-1</sub> * Z'(u)<sup>n</sup><sub>i-1</sub>  + 1</var></dd>
+            <dt>finally</dt>
+            <dd><var>DE = 1/2 * |Z(u)| / |Z'(u)| * log(|Z(u)|)</var></dd>
+          </dl>
+          &nbsp;&nbsp;&nbsp; There are many ways to create distance estimators, but this method presented by Hart is good enough to approximate the surface. It is important to realize that ray casting in general works by revelaing the surface through solving equations
+          and not sampling data sets. The scene is mathematically defined, and without this, real time would be impossible.
+        </p>
+
+      </div>
+    </div>
+  </div>
+
+</body>
+
+</html>

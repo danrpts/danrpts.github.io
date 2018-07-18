@@ -1,0 +1,233 @@
+<!--
+ * Author: Daniel Peterson
+ * CruzID: darpeter@ucsc.edu (old)
+ * Email: danrpts@gmail.com
+ * Project: Mandelbulb
+ * June 4th 2015
+ * Updated July 17th 2018
+ -->
+<!DOCTYPE html>
+<html>
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <title>Mandelbulb</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+  <script type="x-shader/x-vertex" id="vertex-shader">
+    attribute vec2 vertex;
+    varying vec2 pixel;
+    void main () {
+        gl_Position = vec4(vertex, 0, 1);
+        pixel = vertex;
+    }
+  </script>
+  <script type="x-shader/x-fragment" id="fragment-shader">
+    #define PI 3.14159
+    precision highp float;
+    varying vec2 pixel;
+    uniform mat4 rotXYZ;
+    uniform vec3 lightXYZ;
+    uniform vec4 eyeXYZF;
+    uniform float width;
+    uniform float height;
+    uniform float bulbOrder;
+    uniform int bulbDepth;
+    uniform float bulbFineness;
+    vec3 lightPos;
+    vec3 eyePos;
+    vec3 rightVec;
+    vec3 upVec;
+    vec3 forwardVec;
+
+    // Mandelbrot escape radius
+    const float BULB_RADIUS = 2.0;
+
+    // Mandelbrot escape time
+    const int MAX_BULB_DEPTH = 64;
+
+    // surface threshold (minimum walkable distance)
+    const float RAY_EPSILON = 0.001;
+
+    // max ray steps
+    const int RAY_MAX_STEPS = 32;
+
+    // distance estimator mandelbulb
+    float mandelbulbSurface (vec3 C) {
+
+      // base
+      vec3 Z = vec3(0.0);
+
+      // running derivative
+      float dr = 0.0;
+
+      // running length
+      float r = 0.0;
+
+      for (int i = 0; i < MAX_BULB_DEPTH; ++i) {
+
+        // true iteration count
+        if (i > bulbDepth) break;
+
+        // modulus
+        r = length(Z);
+
+        // CASE 1: C has escaped
+        if (r > BULB_RADIUS) break;
+
+        // polarize Z axis
+        float phi = (r > 0.0) ? acos(Z.z/r) : 0.0;
+        float theta = atan(Z.y, Z.x); // glsl atan like atan2
+        if (Z.y < 0.0) theta += (2.0 * PI);
+
+        // take derivative
+        dr = bulbOrder * pow(r, bulbOrder - 1.0) * dr + 1.0;
+
+        // apply nth power
+        r = pow(r, bulbOrder);
+        phi *= bulbOrder;
+        theta *= bulbOrder;
+
+        // rectangularize
+        Z.x = r * sin(phi) * cos(theta);
+        Z.y = r * sin(phi) * sin(theta);
+        Z.z = r * cos(phi);
+
+        // add C
+        Z += C;
+
+      }
+
+      // see John C. Hart papers in literature directory
+      return (0.5 * log(r)) * (r / dr);
+    }
+
+    // define the scene here
+    float surfacesInScene (vec3 point) {
+
+      // apply rotations
+      vec4 rotatedPoint = rotXYZ * vec4(point, 1);
+
+      // estimate distance
+      return mandelbulbSurface(rotatedPoint.xyz);
+    }
+
+    // shoot a ray into the scene and try to interect a surface
+    vec3 intersectSurfacesInScene (vec3 rO, vec3 rD) {
+
+      // defaults to black sky color
+      vec3 shade = vec3(0);
+
+      float totalDistance = 0.0;
+
+      // begin marching
+      vec3 ray;
+      for (int i = 0; i < RAY_MAX_STEPS; ++i) {
+
+        // formulate the ray
+        ray = rO + totalDistance * rD;
+
+        // cast ray into scene
+        float step = surfacesInScene(ray);
+
+        // within the surface threshold
+        if (step < RAY_EPSILON / bulbFineness) {
+          shade = vec3(1.0 - float(i) / float(RAY_MAX_STEPS));
+          break;
+        }
+
+        totalDistance += step;
+      }
+
+      return shade;
+    }
+
+    void main () {
+      lightPos = lightXYZ.xyz;
+      eyePos = eyeXYZF.xyz;
+      rightVec = vec3(1,0,0);
+      upVec = vec3(0,1,0);
+      forwardVec = cross(rightVec, upVec);
+      vec3 rayOrigin = eyePos;
+      vec3 rayDirection = normalize((forwardVec * eyeXYZF.w) + (rightVec * pixel.x) + (upVec * pixel.y));
+
+      // march to implicit surface
+      vec3 finalColor = intersectSurfacesInScene(rayOrigin, rayDirection);
+
+      // final color
+      gl_FragColor = vec4(finalColor, 1);
+    }
+  </script>
+</head>
+<body>
+  <div class="container">
+    <div class="page-header">
+      <h1>Mandelbulb Live Demo <small>Daniel Peterson</small></h1>
+      <a href="../report/index.html" type="button" class="btn btn-default">View Report</a>
+    </div>
+  </div>
+
+  <div class="container">
+    <div class="row">
+      <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
+        <div class="panel panel-default">
+          <div class="panel-heading">Mandelbulb Controls</div>
+          <div class="panel-body">
+            Order:
+            <input type="range" min="2" max="25" step=".05" value="8" id="bulbOrder">
+            </br>
+            Depth:
+            <input type="range" min="2" max="64" step="2" value="32" id="bulbDepth">
+            </br>
+            Fineness:
+            <input type="range" min="1" max="100" step=".05" value="1" id="bulbFineness">
+            </br>
+            Rot X:
+            <input type="range" min="-360" max="360" step="1" value="45" id="rotX">
+            </br>
+            Rot Y:
+            <input type="range" min="-360" max="360" step="1" value="1" id="rotY">
+            </br>
+            Rot Z:
+            <input type="range" min="-360" max="360" step="1" value="0" id="rotZ">
+          </div>
+        </div>
+        <div class="panel panel-default">
+          <div class="panel-heading">Render Controls</div>
+          <div class="panel-body">
+            Light X:
+            <input type="range" min="-20" max="20" step=".05" value="0" id="lightX">
+            </br>
+            Light Y:
+            <input type="range" min="-20" max="20" step=".05" value=".25" id="lightY">
+            </br>
+            Light Z:
+            <input type="range" min="-20" max="20" step=".05" value="-2" id="lightZ">
+            </br>
+            Zoom:
+            <input type="range" min="1" max="20" step=".05" value="1" id="eyeF">
+            </br>
+            Eye X:
+            <input type="range" min="-30" max="30" step=".05" value="0" id="eyeX">
+            </br>
+            Eye Y:
+            <input type="range" min="-30" max="30" step=".05" value=".25" id="eyeY">
+            </br>
+            Eye Z:
+            <input type="range" min="-30" max="30" step=".05" value="-2" id="eyeZ">
+          </div>
+        </div>
+      </div>
+      <div class="col-xs-9 col-sm-9 col-md-9 col-lg-9">
+        <canvas class="thumbnail" id="canvas" width="666" height="666">
+          Your browser doesn't appear to support the HTML5 <code>&lt;canvas&gt;</code> element.
+        </canvas>
+      </div>
+    </div>
+    <script
+        src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha256-3edrmyuQ0w65f8gfBsqowzjJe2iM6n0nKciPUp8y+7E="
+        crossorigin="anonymous"></script>
+    <script type="text/javascript" src="./renderer.js"></script>
+    <script type="text/javascript" src="./init.js"></script>
+    <script type="text/javascript" src="./index.js"></script>
+</body>
+</html>
