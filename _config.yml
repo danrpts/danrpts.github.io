@@ -23,6 +23,7 @@ social:
 # Jekyll config
 permalink: /:title/
 markdown: kramdown
+remote_theme: riggraz/no-style-please
 highlighter: rouge
 excerpt_seperator: "<!--more-->"
 paginate: 6 # number of posts per page
