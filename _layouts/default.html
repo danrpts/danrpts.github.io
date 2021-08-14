@@ -1,22 +1,18 @@
-
-<!-- _layouts/default.html -->
-
 <!DOCTYPE html>
-
-<html lang="{{ site.lang | default: "en" }}">
-
+<html>
   {% include head.html %}
-
-  <body>
-    
-    <main>
+  <body
+    class="is-offset {% unless site.typekit_kit_id %}wf-inactive{% endunless %}"
+  >
+    {% include header.html %}
+    <section role="main">
       {{ content }}
-    </main>
-
+    </section>
     {% include footer.html %}
-
-    {% include scripts.html %}
-
+    <script>
+      window.onload = function() {
+        new window.Starfield("starfield-canvas", "banner").render();
+      };
+    </script>
   </body>
-
 </html>

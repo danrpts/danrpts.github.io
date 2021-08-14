@@ -1,53 +1,11 @@
-
-<!-- _includes/footer.html -->
-
-<footer class="container mb-3">
-
-  <div class="row justify-content-center">
-    <div class="col-lg-8">
-      <hr />
-      <nav class="navbar navbar-light bg-light bg-white px-0 flex-column-reverse flex-sm-row">
-
-        <span class="navbar-text">
-          <small><i class="fa fa-copyright" aria-hidden="true"></i> 2017 <a href="https://github.com/danrpts/tuvok" target="_blank">Daniel Peterson</a>.</small>
-        </span>
-
-        <span class="">
-          <a class="btn" href="{{ site.social.links[0] | default: "#" }}" role="button">
-            <i class="fa fa-github" aria-hidden="true"></i>
-          </a>
-          <a class="btn" href="{{ site.social.links[1] }}" role="button">
-            <i class="fa fa-linkedin" aria-hidden="true"></i>
-          </a>
-          <a class="btn" href="{{ site.social.links[2] }}" role="button">
-            <i class="fa fa-google-plus" aria-hidden="true"></i>
-          </a>
-        </span>
-
-        <span class="navbar-text">
-          <small><a href="{{ page_url | append: "#top" | relative_url }}">&uarr;</a></small>
-          <small><a href="/">Blog</a></small>
-          {% assign paths = site.pages | map: "path" %}
-          {% for path in paths %}
-            {% assign page = site.pages | where: "path", path | first %}
-            {% if page.title %}
-            <small><a href="{{ page.url | relative_url }}">{{ page.title | escape | capitalize }}</a></small>
-            {% endif %}
-          {% endfor %}
-        </span>
-
-      </nav>
-    </div>
-  </div>
-  <div class="row justify-content-center mt-4">
-    <div class="col-lg-8">
-      <a href="bitcoin:{{ site.wallet.btc }}">
-        <img width="100" height="100" class="img-thumbnail mr-1" src={{ site.wallet.btc | prepend: "/assets/images/" | append: "_btc_qr_code.png" | absolute_url }}></a>
-      </a>
-      <a href="ethereum:{{ site.wallet.eth }}">
-        <img width="100" height="100" class="img-thumbnail ml-1" src={{ site.wallet.eth | prepend: "/assets/images/" | append: "_eth_qr_code.png" | absolute_url }}></a>
-      </a>
-      <small class="form-text text-muted text-left">Share a token of appreciation.</small>
-    </div>
-  </div>
+<footer id="footer">
+  <p>
+    <strong
+      ><a href="{{ site.author.link }}" target="_blank"
+        >{{ site.author.name }}</a
+      ></strong
+    >
+  </p>
+  <p class="legal">{{ site.author.description }}</p>
+  {% include social.html %}
 </footer>

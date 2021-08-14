@@ -1,43 +1,9 @@
-
-<!-- _includes/header.html -->
-
-<header>
-  <nav class="navbar navbar-expand-md navbar-light bg-light bg-white border border-top-0 border-left-0 border-right-0">
-    <a class="navbar-brand p-0" href="{{ "/" | relative_url }}">
-
-      <svg class="d-block" width="32" height="32" viewBox="0 0 1792 1792" xmlns="http://www.w3.org/2000/svg" focusable="false">
-        <title>{{ site.title }}</title>
-        <path d="M1333 566q18 20 7 44l-540 1157q-13 25-42 25-4 0-14-2-17-5-25.5-19t-4.5-30l197-808-406 101q-4 1-12 1-18 0-31-11-18-15-13-39l201-825q4-14 16-23t28-9h328q19 0 32 12.5t13 29.5q0 8-5 18l-171 463 396-98q8-2 12-2 19 0 34 15z"/>
-      </svg>
-
-    </a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggle" aria-controls="navbarToggle" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-
-    <div class="collapse navbar-collapse" id="navbarToggle">
-      <ul class="navbar-nav mr-auto my-2 my-lg-0">
-
-        <li class="nav-item">
-          <a class="nav-link" href="{{ "/" | relative_url }}">Blog</a>
-        </li>
-
-          {% assign paths = site.pages | map: "path" %}
-
-          {% for path in paths %}
-            {% assign page = site.pages | where: "path", path | first %}
-            {% if page.title %}
-            <li class="nav-item">
-              <a class="nav-link" href="{{ page.url | relative_url }}">{{ page.title | escape }}</a>
-            </li>
-            {%endif%}
-          {% endfor %}
-
-      </ul>
-      <form class="form-inline my-2 my-lg-0" method="get" action="{{ "/browse" | relative_url }}">
-        <input class="form-control mr-sm-2" name="q" type="text" placeholder="keywords ..." aria-label="Search">
-        <button class="btn btn-outline-dark my-2 my-sm-0" type="submit">Search</button>
-      </form>
-    </div>
-  </nav>
+<header role="banner">
+  <a href="/" id="banner" title="{{ site.title }}">
+    <canvas
+      id="starfield-canvas"
+      style="position:absolute;top:0px;width:100%;height:100%;"
+    ></canvas>
+    <h1>{{ site.title }}</h1>
+  </a>
 </header>

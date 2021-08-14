@@ -1,8 +1,30 @@
-// http://paulirish.com/2011/requestanimationframe-for-smart-animating/
-// http://my.opera.com/emoller/blog/2011/12/20/requestanimationframe-for-smart-er-animating
-// requestAnimationFrame polyfill by Erik Möller. fixes from Paul Irish and Tino Zijdel
-// MIT license
+// The MIT License (MIT)
+//
+// Copyright (c) 2017 Daniel Peterson
+//
+// Permission is hereby granted, free of charge, to any person obtaining a copy
+// of this software and associated documentation files (the "Software"), to deal
+// in the Software without restriction, including without limitation the rights
+// to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+// copies of the Software, and to permit persons to whom the Software is
+// furnished to do so, subject to the following conditions:
+//
+// The above copyright notice and this permission notice shall be included in all
+// copies or substantial portions of the Software.
+//
+// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+// IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+// FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+// AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+// LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+// OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+// SOFTWARE.
+
 (function() {
+  // http://paulirish.com/2011/requestanimationframe-for-smart-animating/
+  // http://my.opera.com/emoller/blog/2011/12/20/requestanimationframe-for-smart-er-animating
+  // requestAnimationFrame polyfill by Erik Möller. fixes from Paul Irish and Tino Zijdel
+  // MIT license
   var lastTime = 0;
   var vendors = ["ms", "moz", "webkit", "o"];
   for (var x = 0; x < vendors.length && !window.requestAnimationFrame; ++x) {
@@ -29,9 +51,9 @@
     };
 })();
 
-// MDN
-// https://developer.mozilla.org/en-US/docs/Web/Events/resize
 (function() {
+  // MDN
+  // https://developer.mozilla.org/en-US/docs/Web/Events/resize
   var throttle = function(type, name, obj) {
     obj = obj || window;
     var running = false;
@@ -61,8 +83,8 @@
 
   const QUANTITY = 128;
   const FPS = 30;
-  const SPEED = 1;
-  const COLORS = ["255, 255, 255", "255, 233, 196", "212, 251, 255"];
+  const SPEED = 0.25;
+  const COLORS = [["255, 255, 255"], ["255, 233, 196"], ["212, 251, 255"]];
   const COLORS_LENGTH = 3;
 
   window.Starfield = function Starfield(canvasId, sizeId) {
@@ -123,7 +145,7 @@
       ) {
         // interpolate alpha
         const a = Math.abs(1 - star[2] / this.z0);
-        this.ctx.strokeStyle = "rgba(" + COLORS[star[4]] + "," + a + ")";
+        this.ctx.strokeStyle = "rgba(" + COLORS[star[4]].join(",") + "," + a + ")";
         this.ctx.strokeRect(px, py, 1, 1);
       }
     }
@@ -149,7 +171,7 @@
         return;
       }
 
-      then = now - delta % interval;
+      then = now - (delta % interval);
 
       animate.call(that);
     }

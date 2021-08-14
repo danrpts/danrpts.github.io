@@ -1,70 +1,45 @@
+# Welcome to Jekyll!
+#
+# This config file is meant for settings that affect your whole blog, values
+# which you are expected to set up once and rarely need to edit after that.
+# For technical reasons, this file is *NOT* reloaded automatically when you use
+# 'jekyll serve'. If you change this file, please restart the server process.
 
-# Site config
-lang: en
-encoding: utf-8
+# Site settings
 title: superdan
-author: Daniel Peterson
-email: its@superdan.io
-avatar: //avatars.githubusercontent.com/danrpts
-description: Daniel Peterson's Blog.
-url: //superdan.io
-repository : danrpts/danrpts.github.io
-wallet:
-  btc: "1GvUmbdmM9iQ3GV7kFpBqKEUaTA33VtfwP"
-  eth: "0x6C0Ddb1361cc7380C45bc6812b018B8EEccf3343"
+description: Daniel Peterson's blog
+baseurl: "" # the subpath of your site, e.g. /blog
+url: "http://www.superdan.io" # the base hostname & protocol for your site
+
+author:
+  name: Daniel Peterson
+  email: its@superdan.io
+  link: "https://www.superdan.io"
+  avatar: "https://avatars.githubusercontent.com/danrpts"
+  description: Explorer &#183; Engineer
+
 social:
-  links:
-    - //github.com/danrpts
-    # - https://twitter.com/<username>
-    # - https://www.facebook.com/<username>
-    - //www.linkedin.com/in/danrpts/
-    - //plus.google.com/u/danrpts
+  github: danrpts
+  linkedin: danrpts
 
-# Jekyll config
-permalink: /:title/
-markdown: kramdown
-highlighter: rouge
-excerpt_seperator: "<!--more-->"
-paginate: 6 # number of posts per page
+# Picturefill
+# A responsive image polyfill: http://scottjehl.github.io/picturefill/
+picturefill: false
 
-# Disqus config
-disqus_shortname: https-danrpts-github-io
+# Typography
+# To use, publish a kit and enter the ID here. If you do not wish to use Typekit,
+# leave this ID blank
+typekit_kit_id: kwf5dox
 
-# Google config
-google_analytics: UA-104085609-1
-
-# Mailchimp config
-mailchimp_action: //github.us16.list-manage.com/subscribe/post?u=e40514466fe2ed7eb4018735e&id=93118f9da3
-mailchimp_nobot: b_e40514466fe2ed7eb4018735e_93118f9da3
-
-# Override template defaults
-overrides:
-  #date_format: "%b %-d, %Y"
-  post_title_length: 30
-  post_excerpt_length: 40
-  words_per_minute: 200
-  paginator_pages: 2 # max number of upper/lower links in the panginator
-
-# Gems
+# Build settings
 plugins:
   - jekyll-paginate
-  - jekyll-sitemap
-  - jekyll-seo-tag
-  - jekyll-feed
-  - jemoji
+markdown: kramdown
+permalink: pretty
 
-# Front matter defaults
-defaults:
-  - scope:
-      path: "_posts"
-      type: posts
-    values:
-      layout: post
-      image: galaxy.jpg
-      disqus_comments: true
-      read_time: true
+# Pagination
+paginate: 5
 
-exclude:
-  - Gemfile
-  - Gemfile.lock
-  - README.md
+# Sass
+sass:
+  style: :compressed
