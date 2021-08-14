@@ -1,61 +1,12 @@
 ---
-layout: page
+layout: default
 ---
 
-<!-- _layouts/home.html -->
+<!-- This loops through the paginated posts -->
+{% for post in paginator.posts %}
+  {% include post.html post=post content=post.excerpt %}
+{% endfor %}
 
-<div>
-
-  <div class="container">
-    <div class="row justify-content-center">
-      <div class="col-lg-8">
-        <div class="card-columns">
-          {% assign date_format = site.overrides.date_format | default: "%b %-d" %}
-          {% for post in paginator.posts %}
-          <div class="card d-inline-block">
-            <a class="card-link" href="{{ post.url | relative_url}}"></a>
-            {% if post.image %}
-            <img class="card-img-top" src="{{ post.image | prepend: "assets/images/" | relative_url }}" aria-hidden="true">
-            {% endif %}
-            <div class="card-body">
-              {% assign post_title_length = site.overrides.post_title_length | default: 20 %}
-              {% assign post_excerpt_length = site.overrides.post_excerpt_length | default: 30 %}
-
-              <p class="lead card-title">{{ post.title | truncate: post_title_length | escape }}</p>
-              <p class="card-text">{{ post.excerpt | strip_html | normalize_whitespace | truncate: post_excerpt_length | escape }}</p>
-            </div>
-            <div class="card-footer">
-              <small class="text-muted">
-                {{ post.date | date: date_format }}
-                {% assign post_content = post.content | escape %}
-                {% if post.read_time %} &middot; {% include read_time.html html=post_content %} {% endif %}
-                {% if site.disqus_shortname and post.comments %}
-                &middot; <a href="{{ post.url | absolute_url }}#disqus_thread">0 Comments</a>
-                {% endif %}
-              </small>
-            </div>
-          </div>
-          {% endfor %}
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <div class="container">
-    <div class="row justify-content-center mt-2">
-      <div class="col-lg-8">
-        <div class="d-flex">
-          <span class="mr-auto">
-            <a class="btn" href="{{ "/feed.xml" | relative_url }}" role="button">
-              <i class="fa fa-feed" aria-hidden="true"></i>
-            </a>
-          </span>
-          <span class="ml-auto">
-            {% include paginator.html %}
-          </span>
-        </div>
-      </div>
-    </div>
-  </div>
-
-</div>
+{% if paginator.total_pages > 1 %}
+    {% include pagination.html maxPages=5 %}
+{% endif %}

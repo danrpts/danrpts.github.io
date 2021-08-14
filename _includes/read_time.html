@@ -1,8 +1,0 @@
-{% assign words_per_minute = site.overrides.words_per_minute | default: 200 %}
-{% assign words = include.html | strip_html | number_of_words %}
-{% if words < words_per_minute %}
-  {% assign time = 1 %}
-{% else %}
-  {% assign time = words | divided_by: words_per_minute %}
-{% endif %}
-{{ time }} min read
